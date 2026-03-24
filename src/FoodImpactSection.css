@@ -1,0 +1,488 @@
+.food-impact {
+  background: linear-gradient(180deg, #cae8d7 0%, #b4d9c5 100%);
+  padding: 72px 0 88px;
+}
+
+.food-impact__anim {
+  opacity: 0;
+  transition: opacity 520ms ease;
+  will-change: opacity;
+}
+
+.food-impact__pepper.food-impact__anim {
+  transform: translateX(140px);
+  transition:
+    opacity 520ms ease,
+    transform 620ms cubic-bezier(0.2, 0.75, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.food-impact__salt.food-impact__anim {
+  transform: translateX(120px);
+  transition:
+    opacity 520ms ease,
+    transform 620ms cubic-bezier(0.2, 0.75, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.food-impact__avocado.food-impact__anim {
+  transform: translateX(-120px);
+  transition:
+    opacity 520ms ease,
+    transform 620ms cubic-bezier(0.2, 0.75, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.food-impact__plate.food-impact__anim {
+  transform: translateX(-50%) translateX(-140px);
+  transition:
+    opacity 520ms ease,
+    transform 720ms cubic-bezier(0.2, 0.75, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.food-impact__anim--d1 { transition-delay: 40ms; }
+.food-impact__anim--d2 { transition-delay: 90ms; }
+.food-impact__anim--d3 { transition-delay: 140ms; }
+.food-impact__anim--d4 { transition-delay: 180ms; }
+.food-impact__anim--d5 { transition-delay: 220ms; }
+.food-impact__anim--d6 { transition-delay: 270ms; }
+.food-impact__anim--d7 { transition-delay: 320ms; }
+
+.food-impact--visible .food-impact__anim {
+  opacity: 1;
+}
+
+.food-impact--visible .food-impact__pepper.food-impact__anim {
+  transform: translateX(0);
+}
+
+.food-impact--visible .food-impact__salt.food-impact__anim {
+  transform: translateX(0);
+}
+
+.food-impact--visible .food-impact__avocado.food-impact__anim {
+  transform: translateX(0);
+}
+
+.food-impact--visible .food-impact__plate.food-impact__anim {
+  transform: translateX(-50%) translateX(0);
+}
+
+.food-impact__inner {
+  text-align: center;
+}
+
+.food-impact__title {
+  margin: 0;
+  font-size: 44px;
+  line-height: 1.15;
+  color: #222a2c;
+}
+
+.food-impact__subtitle {
+  margin: 14px auto 0;
+  max-width: 700px;
+  color: #5f7a6a;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.food-impact__scene {
+  position: relative;
+  margin: 36px auto 0;
+  width: min(1140px, 100%);
+  min-height: 680px;
+}
+
+.food-impact__scene-wrap {
+  width: 100%;
+}
+
+.food-impact__plate {
+  position: absolute;
+  left: 50%;
+  top: -24px;
+  width: 680px;
+  max-width: 100%;
+  transform: translateX(-50%);
+}
+
+.food-impact__pepper {
+  position: absolute;
+  top: 24px;
+  right: -94px;
+  width: 132px;
+}
+
+.food-impact__salt {
+  position: absolute;
+  top: -84px;
+  right: 24px;
+  width: 144px;
+}
+
+.food-impact__avocado {
+  position: absolute;
+  left: 64px;
+  bottom: 154px;
+  width: 200px;
+}
+
+.food-impact__nutrition {
+  position: absolute;
+  left: 50%;
+  bottom: -32px;
+  width: 560px;
+  transform: translateX(-50%);
+  text-align: left;
+  background: #f9fafb;
+  border-radius: 16px;
+  padding: 14px 16px;
+  box-shadow: 0 10px 26px rgba(22, 64, 42, 0.12);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.food-impact__nutrition h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #2f3e37;
+}
+
+.food-impact__kcal {
+  margin: 8px 0 12px;
+  font-size: 20px;
+  color: #8b8f95;
+}
+
+.food-impact__kcal strong {
+  color: #2f2e34;
+}
+
+.food-impact__bars {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  overflow: hidden;
+  border-radius: 999px;
+  height: 10px;
+  margin-bottom: 10px;
+}
+
+.food-impact__bar--protein {
+  background: #3bb56a;
+}
+
+.food-impact__bar--fat {
+  background: #f1ac08;
+}
+
+.food-impact__bar--carbs {
+  background: #21b7d8;
+}
+
+.food-impact__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.food-impact__meta span {
+  color: #71757b;
+  font-size: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.food-impact__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.food-impact__dot--protein {
+  background: #3bb56a;
+}
+
+.food-impact__dot--fat {
+  background: #f1ac08;
+}
+
+.food-impact__dot--carbs {
+  background: #21b7d8;
+}
+
+.food-impact__toast-tag {
+  position: absolute;
+  left: 46px;
+  top: 68px;
+  width: 350px;
+  text-align: left;
+  background: #f9fafb;
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: 0 10px 26px rgba(22, 64, 42, 0.1);
+}
+
+.food-impact__toast-tag h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  color: #2f3e37;
+}
+
+.food-impact__toast-tag p {
+  margin: 0;
+  display: inline-flex;
+  background: #DAFAE3;
+  color: #30AD43;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.food-impact__nuts {
+  position: absolute;
+  left: 84px;
+  top: -54px;
+  width: 140px;
+}
+
+.food-impact__ingredients {
+  position: absolute;
+  right: -24px;
+  top: 220px;
+  width: 380px;
+  text-align: left;
+  background: #f9fafb;
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: 0 10px 26px rgba(22, 64, 42, 0.1);
+}
+
+.food-impact__ingredients h3 {
+  margin: 0 0 6px;
+  font-size: 23px;
+  color: #2f3e37;
+}
+
+.food-impact__ingredients p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #5f7a6a;
+}
+
+.food-impact__arrow-left,
+.food-impact__arrow-right {
+  position: absolute;
+  width: 137px;
+}
+
+.food-impact__arrow-left {
+  left: 284px;
+  top: 32px;
+}
+
+.food-impact__arrow-right {
+  right: 160px;
+  top: 364px;
+  transform: rotate(160deg);
+}
+
+.food-impact__seeds {
+  position: absolute;
+  right: 28px;
+  top: 390px;
+  width: 170px;
+}
+
+@media (max-width: 980px) {
+  .food-impact {
+    padding: 44px 0 52px;
+  }
+
+  .food-impact__title {
+    font-size: 34px;
+  }
+
+  .food-impact__subtitle {
+    font-size: 18px;
+    max-width: 520px;
+    padding-inline: 12px;
+  }
+
+  .food-impact__scene-wrap {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .food-impact__scene {
+    position: relative;
+    width: min(100%, 430px);
+    min-height: 640px;
+    margin: 24px auto 0;
+  }
+
+  .food-impact__plate {
+    width: min(94vw, 360px);
+    left: 50%;
+    top: 56px;
+    transform: translateX(-50%);
+  }
+
+  .food-impact__toast-tag {
+    width: min(86vw, 250px);
+    left: 10px;
+    top: 20px;
+    padding: 8px 10px;
+  }
+
+  .food-impact__toast-tag h3 {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .food-impact__toast-tag p {
+    font-size: 11px;
+    padding: 2px 7px;
+  }
+
+  .food-impact__ingredients {
+    width: min(52vw, 200px);
+    right: 0;
+    top: 146px;
+    padding: 8px 10px;
+  }
+
+  .food-impact__ingredients h3 {
+    font-size: 15px;
+  }
+
+  .food-impact__ingredients p {
+    font-size: 10px;
+    line-height: 1.35;
+  }
+
+  .food-impact__nutrition {
+    width: min(92vw, 360px);
+    left: 50%;
+    bottom: 36px;
+    transform: translateX(-50%);
+    padding: 12px;
+  }
+
+  .food-impact__nutrition h3 {
+    font-size: 20px;
+  }
+
+  .food-impact__kcal {
+    font-size: 20px;
+    margin: 6px 0 10px;
+  }
+
+  .food-impact__bars {
+    height: 8px;
+    margin-bottom: 8px;
+  }
+
+  .food-impact__meta {
+    gap: 6px;
+    justify-content: space-between;
+  }
+
+  .food-impact__meta span {
+    font-size: 13px;
+    gap: 5px;
+  }
+
+  .food-impact__dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .food-impact__avocado {
+    width: min(46vw, 170px);
+    left: -8px;
+    bottom: 106px;
+  }
+
+  .food-impact__seeds {
+    width: min(28vw, 110px);
+    right: 8px;
+    bottom: 120px;
+    top: auto;
+  }
+
+  .food-impact__nuts {
+    width: min(26vw, 100px);
+    left: 126px;
+    top: -4px;
+  }
+
+  .food-impact__salt {
+    width: min(26vw, 96px);
+    right: 58px;
+    top: -4px;
+  }
+
+  .food-impact__pepper {
+    width: min(22vw, 84px);
+    right: -4px;
+    top: 14px;
+  }
+
+  .food-impact__arrow-left,
+  .food-impact__arrow-right {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .food-impact {
+    padding: 36px 0 44px;
+  }
+
+  .food-impact__title {
+    font-size: 28px;
+  }
+
+  .food-impact__subtitle {
+    font-size: 16px;
+    max-width: 340px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .food-impact__anim,
+  .food-impact__anim--d1,
+  .food-impact__anim--d2,
+  .food-impact__anim--d3,
+  .food-impact__anim--d4,
+  .food-impact__anim--d5,
+  .food-impact__anim--d6,
+  .food-impact__anim--d7 {
+    transition: none;
+    opacity: 1;
+  }
+
+  .food-impact__pepper.food-impact__anim {
+    transform: none;
+  }
+
+  .food-impact__salt.food-impact__anim {
+    transform: none;
+  }
+
+  .food-impact__avocado.food-impact__anim {
+    transform: none;
+  }
+
+  .food-impact__plate.food-impact__anim {
+    transform: none;
+  }
+}
