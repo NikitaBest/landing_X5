@@ -76,6 +76,30 @@ h1 {
   color: var(--primary);
 }
 
+@media (min-width: 981px) {
+  .text-accent {
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  .hero-content {
+    align-self: start;
+    margin-top: clamp(110px, 1vw, 28px);
+  }
+
+  h1 {
+    margin-bottom: 16px;
+  }
+
+  .lead {
+    margin-bottom: 18px;
+  }
+
+  .hero-tags {
+    margin-bottom: 20px;
+  }
+}
+
 .lead {
   max-width: 540px;
   font-size: 20px;
