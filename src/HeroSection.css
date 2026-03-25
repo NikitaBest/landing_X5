@@ -310,6 +310,11 @@ h1 {
     justify-content: center;
   }
 
+  .hero-image-wrap {
+    width: 100%;
+    justify-content: center;
+  }
+
   .mobile-menu {
     display: block;
     width: 100%;
@@ -386,6 +391,23 @@ h1 {
     margin-bottom: 18px;
   }
 
+  .hero {
+    padding-top: 14px;
+    gap: 18px;
+  }
+
+  h1 {
+    font-size: clamp(1.75rem, 7.2vw, 2.25rem);
+    line-height: 1.08;
+    margin-bottom: 14px;
+  }
+
+  .lead {
+    font-size: 15px;
+    line-height: 1.45;
+    margin-bottom: 18px;
+  }
+
   .hero-tags {
     gap: 8px;
     justify-content: space-between;
@@ -395,11 +417,12 @@ h1 {
   .hero-tag {
     min-width: 0;
     width: calc(50% - 4px);
-    font-size: clamp(9px, 2.9vw, 13px);
+    max-width: none;
+    font-size: clamp(10px, 2.8vw, 13px);
     justify-content: center;
     white-space: nowrap;
     line-height: 1;
-    height: 40px;
+    height: 36px;
     padding: 6px 8px;
     overflow: visible;
   }
@@ -414,6 +437,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    gap: 12px;
   }
 
   .hero-scan-button,
@@ -422,12 +446,29 @@ h1 {
     max-width: 100%;
   }
 
+  .hero-scan-button {
+    height: 52px;
+    border-radius: 16px;
+  }
+
+  .hero-how-button {
+    height: 52px;
+    padding: 0 18px;
+    border-radius: 16px;
+  }
+
+  .hero-how-button .button__icon img {
+    width: 16px;
+    height: 16px;
+  }
+
   .hero-image-wrap {
     width: 100%;
     margin-left: 0;
     margin-right: 0;
     overflow: visible;
     justify-content: center;
+    margin-top: 6px;
   }
 
   .hero-image-wrap::before {
@@ -451,26 +492,29 @@ h1 {
     gap: 18px;
   }
 
+  .hero-scan-button,
+  .hero-how-button {
+    height: 50px;
+  }
+
   h1 {
-    font-size: clamp(1.65rem, 9.2vw, 2.1rem);
+    font-size: clamp(1.6rem, 8.4vw, 2rem);
+    line-height: 1.1;
   }
 
   .lead {
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 1.45;
   }
 
-  .hero-tags {
-    flex-wrap: nowrap;
-    justify-content: space-between;
+  .hero-image {
+    width: min(100%, 360px);
   }
 
   .hero-tag {
-    width: calc(50% - 4px);
-    white-space: nowrap;
-    justify-content: center;
-    height: 40px;
-    min-height: 40px;
-    font-size: clamp(8px, 2.7vw, 11px);
+    font-size: clamp(9px, 3.1vw, 12px);
+    height: 34px;
+    padding: 6px 6px;
   }
 
   .mobile-menu-nav {
