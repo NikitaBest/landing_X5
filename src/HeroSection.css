@@ -1,8 +1,29 @@
 .topbar {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px 0 10px;
+  isolation: isolate;
+}
+
+.topbar::before {
+  content: '';
+  position: absolute;
+  left: -90px;
+  top: -90px;
+  width: 320px;
+  height: 320px;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(circle at 40% 40%, rgba(100, 199, 149, 0.35), transparent 70%);
+  filter: blur(22px);
+}
+
+@media (max-width: 980px) {
+  .topbar::before {
+    display: none;
+  }
 }
 
 .brand {
@@ -212,14 +233,14 @@ h1 {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 140%;
-  height: 140%;
+  width: 175%;
+  height: 175%;
   z-index: 0;
   pointer-events: none;
   background:
     radial-gradient(closest-side at 52% 52%, rgba(100, 199, 149, 0.34), transparent 74%),
     radial-gradient(closest-side at 68% 68%, rgba(71, 158, 75, 0.2), transparent 76%);
-  filter: blur(26px);
+  filter: blur(30px);
   transform: translate(-50%, -50%) translateZ(0);
 }
 
@@ -509,8 +530,8 @@ h1 {
   }
 
   .hero-image-wrap::before {
-    width: 170%;
-    height: 170%;
+    width: 210%;
+    height: 210%;
   }
 
   .hero-image {
