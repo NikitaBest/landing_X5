@@ -203,7 +203,7 @@
   }
 
   .how-it-works__steps {
-    overflow-x: visible;
+    overflow-x: clip;
   }
 
   .how-it-works__chip {

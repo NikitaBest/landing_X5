@@ -4,6 +4,7 @@ import ProcessSection from './ProcessSection'
 import FoodImpactSection from './FoodImpactSection'
 import HowItWorksSection from './HowItWorksSection'
 import SignalsSection from './SignalsSection'
+import NutritionistSection from './NutritionistSection'
 import FaqSection from './FaqSection'
 import FinalCtaSection from './FinalCtaSection'
 import FooterSection from './FooterSection'
@@ -67,6 +68,7 @@ function App() {
       <FoodImpactSection />
       <HowItWorksSection />
       <SignalsSection />
+      <NutritionistSection />
       <FaqSection />
       <FinalCtaSection onOpenScanModal={handleOpenScanModal} />
       <FooterSection />
