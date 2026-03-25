@@ -72,6 +72,8 @@
   overflow: hidden;
   cursor: pointer;
   background:
+    linear-gradient(180deg, rgba(15, 20, 18, 0.12) 0%, rgba(15, 20, 18, 0.28) 100%),
+    url('/videoimage.png') center / cover no-repeat,
     radial-gradient(120% 120% at 60% 30%, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.05) 45%, rgba(0, 0, 0, 0.12) 100%),
     linear-gradient(140deg, #d8dfe2 0%, #b4bdc3 40%, #a4b1ba 100%);
   box-shadow: 0 20px 44px rgba(23, 43, 34, 0.16);
@@ -128,6 +130,60 @@
 .how-it-works__meta span + span {
   border-left: 1px solid #dde4e8;
   padding-left: 18px;
+}
+
+.how-it-works__modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(15, 20, 18, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.how-it-works__modal-inner {
+  width: min(100%, 980px);
+  aspect-ratio: 16 / 9;
+  background: #0f1412;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+.how-it-works__modal-video {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  background: #0f1412;
+}
+
+.how-it-works__modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(20, 26, 23, 0.7);
+  color: rgba(255, 255, 255, 0.92);
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.how-it-works__modal-close:hover {
+  background: rgba(20, 26, 23, 0.86);
 }
 
 .how-it-works__chip-text--short {

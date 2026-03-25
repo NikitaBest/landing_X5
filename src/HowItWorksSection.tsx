@@ -1,6 +1,22 @@
+import { useEffect, useState } from 'react'
 import './HowItWorksSection.css'
 
 function HowItWorksSection() {
+  const [isVideoOpen, setIsVideoOpen] = useState(false)
+
+  useEffect(() => {
+    if (!isVideoOpen) return
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsVideoOpen(false)
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [isVideoOpen])
+
   return (
     <section className="how-it-works" id="how-it-works">
       <div className="section how-it-works__inner">
@@ -32,7 +48,12 @@ function HowItWorksSection() {
           </span>
         </div>
 
-        <button className="how-it-works__video" type="button" aria-label="Смотреть видео">
+        <button
+          className="how-it-works__video"
+          type="button"
+          aria-label="Смотреть видео"
+          onClick={() => setIsVideoOpen(true)}
+        >
           <span className="how-it-works__play" aria-hidden="true">
             <svg viewBox="0 0 48 48" role="presentation" focusable="false">
               <path d="M16 11 L36 24 L16 37 Z" />
@@ -46,6 +67,28 @@ function HowItWorksSection() {
           <span>Полная конфиденциальность</span>
         </div>
       </div>
+
+      {isVideoOpen ? (
+        <div
+          className="how-it-works__modal"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Видео: как это работает"
+          onClick={() => setIsVideoOpen(false)}
+        >
+          <div className="how-it-works__modal-inner" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="how-it-works__modal-close"
+              type="button"
+              aria-label="Закрыть видео"
+              onClick={() => setIsVideoOpen(false)}
+            >
+              ✕
+            </button>
+            <video className="how-it-works__modal-video" src="/video.mp4" controls autoPlay playsInline />
+          </div>
+        </div>
+      ) : null}
     </section>
   )
 }
