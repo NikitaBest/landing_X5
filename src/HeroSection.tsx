@@ -68,8 +68,11 @@ function HeroSection({ onOpenScanModal }: HeroSectionProps) {
             с помощью ИИ
           </h1>
           <p className="lead">
-          60-секундное селфи-видео 
-          анализирует состояние организма и подбирает персональный рацион для вас.
+            60-секундное селфи-видео
+            <br className="lead-break" />
+            анализирует состояние организма, ваши цели и подбирает
+            <br className="lead-break" />
+            персональный рацион питания
           </p>
           <div className="hero-tags">
             <span className="hero-tag">
