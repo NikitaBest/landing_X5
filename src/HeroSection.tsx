@@ -4,9 +4,10 @@ import './HeroSection.css'
 
 type HeroSectionProps = {
   onOpenScanModal: () => void
+  onOpenScanModalWeb: () => void
 }
 
-function HeroSection({ onOpenScanModal }: HeroSectionProps) {
+function HeroSection({ onOpenScanModal, onOpenScanModalWeb }: HeroSectionProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   return (
@@ -17,11 +18,11 @@ function HeroSection({ onOpenScanModal }: HeroSectionProps) {
           <span className="brand-name">NutriScan</span>
         </div>
         <nav className="menu" aria-label="Главное меню">
-          <a href="#how">Как работает</a>
-          <a href="#tech">Технология</a>
+          <a href="#how-it-works">Как работает</a>
+          <a href="#signals">Технология</a>
           <a href="#faq">FAQ</a>
-          <Button className="menu-scan-button" type="button" onClick={onOpenScanModal}>
-            Сканировать
+          <Button className="menu-scan-button" type="button" onClick={onOpenScanModalWeb}>
+            Пройти чекап
           </Button>
         </nav>
         <button
@@ -39,10 +40,10 @@ function HeroSection({ onOpenScanModal }: HeroSectionProps) {
       {isMobileMenuOpen ? (
         <div className="mobile-menu" id="mobile-menu">
           <nav className="mobile-menu-nav" aria-label="Мобильное меню">
-            <a href="#how" onClick={() => setIsMobileMenuOpen(false)}>
+            <a href="#how-it-works" onClick={() => setIsMobileMenuOpen(false)}>
               Как работает
             </a>
-            <a href="#tech" onClick={() => setIsMobileMenuOpen(false)}>
+            <a href="#signals" onClick={() => setIsMobileMenuOpen(false)}>
               Технология
             </a>
             <a href="#faq" onClick={() => setIsMobileMenuOpen(false)}>
@@ -97,6 +98,9 @@ function HeroSection({ onOpenScanModal }: HeroSectionProps) {
               variant="secondary"
               className="hero-how-button"
               type="button"
+              onClick={() => {
+                document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })
+              }}
               startIcon={<img src="/Iconcac.svg" alt="" aria-hidden="true" />}
             >
               Как это работает

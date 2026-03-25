@@ -35,6 +35,12 @@ function App() {
     setIsScanModalOpen(true)
   }, [])
 
+  // Кнопка в верхнем хедере видна только на вебе (десктопе),
+  // поэтому не блокируем открытие модалки проверкой "phone client".
+  const handleOpenScanModalWeb = useCallback(() => {
+    setIsScanModalOpen(true)
+  }, [])
+
   const handleCloseScanModal = useCallback(() => {
     setIsScanModalOpen(false)
   }, [])
@@ -56,7 +62,7 @@ function App() {
 
   return (
     <div className="page">
-      <HeroSection onOpenScanModal={handleOpenScanModal} />
+      <HeroSection onOpenScanModal={handleOpenScanModal} onOpenScanModalWeb={handleOpenScanModalWeb} />
       <ProcessSection />
       <FoodImpactSection />
       <HowItWorksSection />

@@ -28,7 +28,7 @@ function FoodImpactSection() {
     <section
       ref={sectionRef}
       className={`food-impact ${isVisible ? 'food-impact--visible' : ''}`}
-      id="faq"
+      id="food-impact"
     >
       <div className="section food-impact__inner">
         <h2 className="food-impact__title food-impact__anim food-impact__anim--d1">
