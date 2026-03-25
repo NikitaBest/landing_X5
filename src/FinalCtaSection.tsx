@@ -14,12 +14,11 @@ function FinalCtaSection({ onOpenScanModal }: FinalCtaSectionProps) {
         <img className="final-cta__avocado" src="/bloc3-2.png" alt="" aria-hidden="true" />
 
         <h2 className="final-cta__title">
-          Пройдите сканирование и получите
-          <br />
-          <span>персональный рацион</span>
+          Ваш <span className="final-cta__title-accent">персональный рацион</span> по одному <br />
+          <span>взгляду в камеру смартфона</span>
         </h2>
 
-        <p className="final-cta__subtitle">Вы уже знаете как это работает. Осталось попробовать.</p>
+        <p className="final-cta__subtitle">ИИ проанализирует 20+ показателей здоровья и соберет рацион питания за 60 секунд.</p>
 
         <Button
           className="final-cta__button"
@@ -27,7 +26,7 @@ function FinalCtaSection({ onOpenScanModal }: FinalCtaSectionProps) {
           type="button"
           onClick={onOpenScanModal}
         >
-          Пройти сканирование
+          Пройти чекап
         </Button>
 
         <div className="final-cta__meta">
