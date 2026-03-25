@@ -30,7 +30,9 @@ function ProcessSection() {
       id="tech"
     >
       <div className="section process__inner">
-        <h2 className="process__title">От вашего состояния к персональному рациону</h2>
+        <h2 className="process__title">
+          От вашего состояния к <span className="process__title-accent">персональному рациону</span>
+        </h2>
         <p className="process__subtitle">
           Всего 3 шага — и вы получите рацион, подобранный под ваши задачи и состояние
         </p>
@@ -40,7 +42,7 @@ function ProcessSection() {
             <span className="process-card__icon" aria-hidden="true">
               <img src="/bloc2-1.svg" alt="" />
             </span>
-            <h3>Сделай чекап</h3>
+            <h3>Пройдите чекап</h3>
             <p>Наведите селфи-камеру - всё остальное сделает ИИ.</p>
             <span className="process-card__badge">За 60 секунд</span>
           </article>

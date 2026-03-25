@@ -9,21 +9,26 @@ function HowItWorksSection() {
         <div className="how-it-works__steps" aria-label="Этапы процесса">
           <span className="how-it-works__chip">
             <img src="/bloc4-1.svg" alt="" aria-hidden="true" />
-            Чекап
+            Чекап здоровья
           </span>
           <span className="how-it-works__arrow" aria-hidden="true">
             <img src="/strl2.svg" alt="" />
           </span>
           <span className="how-it-works__chip">
             <img src="/bloc4-2.svg" alt="" aria-hidden="true" />
-            Показатели здоровья
+            <span className="how-it-works__chip-text how-it-works__chip-text--full">
+              Показатели организма
+            </span>
+            <span className="how-it-works__chip-text how-it-works__chip-text--short">
+              Показатели
+            </span>
           </span>
           <span className="how-it-works__arrow" aria-hidden="true">
             <img src="/strl2.svg" alt="" />
           </span>
           <span className="how-it-works__chip">
             <img src="/bloc4-3.svg" alt="" aria-hidden="true" />
-            Рацион
+            Рацион питания
           </span>
         </div>
 

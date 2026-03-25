@@ -80,6 +80,10 @@
   color: #222a2c;
 }
 
+.food-impact__title-accent {
+  color: #2e7d32;
+}
+
 .food-impact__subtitle {
   margin: 14px auto 0;
   max-width: 700px;

@@ -32,10 +32,10 @@ function FoodImpactSection() {
     >
       <div className="section food-impact__inner">
         <h2 className="food-impact__title food-impact__anim food-impact__anim--d1">
-          Как еда влияет на вас
+          Как еда <span className="food-impact__title-accent">влияет на вас</span>
         </h2>
         <p className="food-impact__subtitle food-impact__anim food-impact__anim--d2">
-          Рацион формируется так, чтобы поддерживать организм и снижать выявленные риски
+         Рацион формируется так, чтобы улучшить показатели, достигнуть целей и снизить риски 
         </p>
 
         <div className="food-impact__scene-wrap">

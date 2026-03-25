@@ -15,6 +15,10 @@
   color: #333f3a;
 }
 
+.process__title-accent {
+  color: #2e7d32;
+}
+
 .process__subtitle {
   margin: 16px auto 0;
   max-width: 620px;
