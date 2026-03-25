@@ -28,7 +28,7 @@ function ScanModal({ isOpen, onClose }: ScanModalProps) {
         <div className="scan-modal__qr-wrap">
           <img
             className="scan-modal__qr"
-            src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&data=https%3A%2F%2Fnutriscan.app"
+            src="/qrcode.png"
             alt="QR-код для открытия NutriScan на телефоне"
           />
         </div>
