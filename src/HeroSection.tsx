@@ -71,9 +71,9 @@ function HeroSection({ onOpenScanModal, onOpenScanModalWeb }: HeroSectionProps) 
             с помощью ИИ
           </h1>
           <p className="lead">
-            60-секундное селфи-видео
+            60-секундное селфи-видео{' '}
             <br className="lead-break" />
-            анализирует состояние организма, ваши цели и подбирает
+            анализирует состояние организма, ваши цели и подбирает{' '}
             <br className="lead-break" />
             персональный рацион питания
           </p>
