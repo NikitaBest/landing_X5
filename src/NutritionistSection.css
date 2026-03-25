@@ -98,11 +98,11 @@
 .nutritionist__person-role {
   font-size: 12px;
   line-height: 1.2;
-  color: #5f7a6a;
+  color: #479e4b;
 }
 
 .nutritionist__person-role--accent {
-  color: #2e7d32;
+  color: #479e4b;
   font-weight: 600;
 }
 
@@ -112,10 +112,18 @@
 }
 
 .nutritionist__image {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 880px;
   height: auto;
   display: block;
+}
+
+.nutritionist__mobile-image {
+  display: none;
+  width: 100%;
+  height: auto;
 }
 
 .nutritionist__badge {
@@ -125,11 +133,29 @@
   height: auto;
   transform: translateY(-50%);
   pointer-events: none;
+  z-index: 2;
+}
+
+.nutritionist__badge--behind-left-bottom {
+  left: 0;
+  bottom: 0;
+  top: auto;
+  width: clamp(84px, 10vw, 150px);
+  transform: translate(-12%, 12%);
+  z-index: 0;
+  opacity: 0.95;
 }
 
 .nutritionist__badge--right {
   right: 0;
   transform: translate(35%, -50%);
+}
+
+.nutritionist__badge--left {
+  left: 18px;
+  top: 12%;
+  width: clamp(88px, 10vw, 152px);
+  transform: translate(0, -50%);
 }
 
 @media (min-width: 1100px) {
@@ -180,6 +206,15 @@
     order: 1;
   }
 
+  .nutritionist__mobile-image {
+    display: block;
+  }
+
+  .nutritionist__image,
+  .nutritionist__badge {
+    display: none;
+  }
+
   .nutritionist__badge {
     width: clamp(64px, 18vw, 96px);
     top: 58%;
@@ -188,6 +223,20 @@
   .nutritionist__badge--right {
     right: 10px;
     transform: translate(0, -50%);
+  }
+
+  .nutritionist__badge--left {
+    left: 16px;
+    top: 20%;
+    width: clamp(76px, 20vw, 116px);
+    transform: translate(0, -50%);
+  }
+
+  .nutritionist__badge--behind-left-bottom {
+    left: 0;
+    bottom: 0;
+    width: clamp(74px, 22vw, 120px);
+    transform: translate(0, 6%);
   }
 }
 

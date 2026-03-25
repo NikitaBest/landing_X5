@@ -44,7 +44,7 @@ body {
 
 .page {
   min-height: 100svh;
-  padding-bottom: 24px;
+  padding-bottom: 0;
 }
 
 .section {

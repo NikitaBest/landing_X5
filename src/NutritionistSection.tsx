@@ -39,7 +39,11 @@ function NutritionistSection() {
         </div>
 
         <div className="nutritionist__media" aria-hidden="true">
+          <img className="nutritionist__mobile-image" src="/mobii.png" alt="" />
+
+          <img className="nutritionist__badge nutritionist__badge--behind-left-bottom" src="/blocii-3.png" alt="" />
           <img className="nutritionist__image" src="/fotnutr.png" alt="" />
+          <img className="nutritionist__badge nutritionist__badge--left" src="/blocii-2.png" alt="" />
           <img className="nutritionist__badge nutritionist__badge--right" src="/blocii-1.png" alt="" />
         </div>
       </div>
