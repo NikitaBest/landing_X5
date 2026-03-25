@@ -64,7 +64,7 @@ function FaqSection() {
   return (
     <section className="faq" id="faq">
       <div className="section faq__inner">
-        <h2 className="faq__title">Частые вопросы</h2>
+        <h2 className="faq__title">Часто задаваемые вопросы</h2>
 
         <div className="faq__grid">
           {FAQ_ITEMS.map((item, index) => {

@@ -10,16 +10,21 @@
 
 .faq__title {
   margin: 0;
-  width: 380px;
+  width: fit-content;
   max-width: 100%;
-  min-height: 51px;
   margin-inline: auto;
   text-align: center;
   font-style: normal;
   font-weight: 600;
   font-size: 44px;
-  line-height: 51px;
+  line-height: 1.15;
   color: #1a2e1a;
+}
+
+@media (min-width: 981px) {
+  .faq__title {
+    white-space: nowrap;
+  }
 }
 
 .faq__grid {
@@ -116,8 +121,10 @@
   .faq__title {
     width: 100%;
     min-height: 0;
-    font-size: 32px;
+    white-space: normal;
+    font-size: clamp(26px, 7vw, 32px);
     line-height: 1.2;
+    text-wrap: balance;
   }
 
   .faq__grid {
@@ -147,7 +154,7 @@
 
 @media (max-width: 480px) {
   .faq__title {
-    font-size: 28px;
+    font-size: clamp(22px, 6.4vw, 28px);
   }
 
   .faq__button {
@@ -167,5 +174,12 @@
   .faq__chevron svg {
     width: 13px;
     height: 13px;
+  }
+}
+
+@media (max-width: 360px) {
+  .faq__title {
+    font-size: 22px;
+    line-height: 1.25;
   }
 }

@@ -31,10 +31,10 @@ function ProcessSection() {
     >
       <div className="section process__inner">
         <h2 className="process__title">
-          От вашего состояния к <span className="process__title-accent">персональному рациону</span>
+        От состояния вашего здоровья <span className="process__title-accent">к рациону</span>
         </h2>
         <p className="process__subtitle">
-          Всего 3 шага — и вы получите рацион, подобранный под ваши задачи и состояние
+          Всего 3 шага — и вы получаете рацион, подобранный под ваши задачи и состояние
         </p>
 
         <div className="process__grid">
@@ -69,7 +69,7 @@ function ProcessSection() {
               <img src="/bloc2-3.svg" alt="" />
             </span>
             <h3>Ваш рацион готов</h3>
-            <p>Подобран с учётом вашего состояния для улучшения самочувствия и снижения рисков.</p>
+            <p>Подобран с учётом вашего состояния для улучшения самочувствия и снижения рисков здоровья.</p>
             <span className="process-card__badge">На 7 дней</span>
           </article>
         </div>
