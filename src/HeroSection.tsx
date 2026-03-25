@@ -12,29 +12,31 @@ function HeroSection({ onOpenScanModal, onOpenScanModalWeb }: HeroSectionProps) 
 
   return (
     <>
-      <header className={`section topbar ${isMobileMenuOpen ? 'topbar--menu-open' : ''}`}>
-        <div className="brand">
-          <img className="brand-icon" src="/iconlogj.svg" alt="Логотип NutriScan" />
-          <span className="brand-name">NutriScan</span>
+      <header className={`topbar ${isMobileMenuOpen ? 'topbar--menu-open' : ''}`}>
+        <div className="section topbar__inner">
+          <div className="brand">
+            <img className="brand-icon" src="/iconlogj.svg" alt="Логотип NutriScan" />
+            <span className="brand-name">NutriScan</span>
+          </div>
+          <nav className="menu" aria-label="Главное меню">
+            <a href="#how-it-works">Как работает</a>
+            <a href="#signals">Технология</a>
+            <a href="#faq">FAQ</a>
+            <Button className="menu-scan-button" type="button" onClick={onOpenScanModalWeb}>
+              Пройти чекап
+            </Button>
+          </nav>
+          <button
+            className="mobile-menu-toggle"
+            type="button"
+            onClick={() => setIsMobileMenuOpen((value) => !value)}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
+            aria-label={isMobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
+          >
+            {isMobileMenuOpen ? '✕' : '☰'}
+          </button>
         </div>
-        <nav className="menu" aria-label="Главное меню">
-          <a href="#how-it-works">Как работает</a>
-          <a href="#signals">Технология</a>
-          <a href="#faq">FAQ</a>
-          <Button className="menu-scan-button" type="button" onClick={onOpenScanModalWeb}>
-            Пройти чекап
-          </Button>
-        </nav>
-        <button
-          className="mobile-menu-toggle"
-          type="button"
-          onClick={() => setIsMobileMenuOpen((value) => !value)}
-          aria-expanded={isMobileMenuOpen}
-          aria-controls="mobile-menu"
-          aria-label={isMobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
-        >
-          {isMobileMenuOpen ? '✕' : '☰'}
-        </button>
       </header>
 
       {isMobileMenuOpen ? (

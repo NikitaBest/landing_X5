@@ -27,7 +27,7 @@ function FooterSection() {
           <nav className="footer__col" aria-label="Навигация">
             <h3>Навигация</h3>
             <a href="#how-it-works">Как работает</a>
-            <a href="#process">Наука</a>
+            <a href="#nutritionist">Наука</a>
             <a href="#faq">FAQ</a>
           </nav>
 
