@@ -77,15 +77,39 @@ function HowItWorksSection() {
           onClick={() => setIsVideoOpen(false)}
         >
           <div className="how-it-works__modal-inner" onClick={(e) => e.stopPropagation()}>
+            <div className="how-it-works__modal-header">
+              <button
+                className="how-it-works__modal-close"
+                type="button"
+                aria-label="Закрыть видео"
+                onClick={() => setIsVideoOpen(false)}
+              >
+                ✕
+              </button>
+            </div>
+
             <button
-              className="how-it-works__modal-close"
+              className="how-it-works__modal-close how-it-works__modal-close--floating"
               type="button"
               aria-label="Закрыть видео"
               onClick={() => setIsVideoOpen(false)}
             >
               ✕
             </button>
-            <video className="how-it-works__modal-video" src="/video.mp4" controls autoPlay playsInline />
+            <div className="how-it-works__modal-body">
+              <video className="how-it-works__modal-video" src="/video.mp4" controls autoPlay playsInline />
+            </div>
+
+            <div className="how-it-works__modal-footer">
+              <button
+                className="how-it-works__modal-footer-close"
+                type="button"
+                aria-label="Закрыть видео"
+                onClick={() => setIsVideoOpen(false)}
+              >
+                Понятно
+              </button>
+            </div>
           </div>
         </div>
       ) : null}
