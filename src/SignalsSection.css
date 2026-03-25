@@ -127,3 +127,22 @@
     margin-top: 0;
   }
 }
+
+@media (max-width: 480px) {
+  .signals__intro h2 {
+    font-size: 28px;
+    line-height: 1.12;
+  }
+
+  .signals__lead {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .signals__intro h2 {
+    font-size: 26px;
+  }
+}
