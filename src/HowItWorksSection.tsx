@@ -97,7 +97,7 @@ function HowItWorksSection() {
               ✕
             </button>
             <div className="how-it-works__modal-body">
-              <video className="how-it-works__modal-video" src="/video.mp4" controls autoPlay playsInline />
+              <video className="how-it-works__modal-video" src="/video.mov" controls autoPlay playsInline />
             </div>
 
             <div className="how-it-works__modal-footer">
