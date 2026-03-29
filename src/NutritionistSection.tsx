@@ -31,7 +31,7 @@ function NutritionistSection() {
                 <div className="nutritionist__person-name">Наталья Кузнецова</div>
                 <div className="nutritionist__person-role">Клинический нутрициолог,</div>
                 <div className="nutritionist__person-role nutritionist__person-role--accent">
-                  медицинский дизайнер ИИ-модели
+                медицинский эдвайзер проекта
                 </div>
               </div>
             </figcaption>

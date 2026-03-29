@@ -33,8 +33,20 @@ function FooterSection() {
 
           <div className="footer__col">
             <h3>Документы</h3>
-            <a href="#privacy">Политика конфиденциальности</a>
-            <a href="#terms">Условия использования</a>
+            <a
+              href="https://docs.google.com/document/d/195F-F1FnvYhJrSAv6yNNh8ZR10khf6tpu-MWxeL9st0/edit?tab=t.0"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Политика конфиденциальности
+            </a>
+            <a
+              href="https://docs.google.com/document/d/1TOT0pCYPori4p4MS2s5xxgu9e_DGkbw612-G5HDkIjM/edit?tab=t.0"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Условия использования
+            </a>
           </div>
 
           <div className="footer__col">
