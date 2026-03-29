@@ -27,7 +27,7 @@ function FooterSection() {
           <nav className="footer__col" aria-label="Навигация">
             <h3>Навигация</h3>
             <a href="#how-it-works">Как работает</a>
-            <a href="#nutritionist">Наука</a>
+            <a href="#nutritionist">Технология</a>
             <a href="#faq">FAQ</a>
           </nav>
 
@@ -38,13 +38,16 @@ function FooterSection() {
           </div>
 
           <div className="footer__col">
-            <h3>Контакты</h3>
-            <a href="mailto:hello@nutriscan.app">hello@nutriscan.app</a>
+            <h3 className="footer__heading-as-link">
+              <a href="https://mobilemed.ai/" target="_blank" rel="noreferrer">
+                MobileMed.AI
+              </a>
+            </h3>
           </div>
         </div>
 
         <div className="footer__bottom">
-          <span>© 2026 NutriScan. Все права защищены.</span>
+          <span>© 2026 NutriScan. ИИ. Все права защищены.</span>
           <span>
             Nutriscan, разработанный на технологии{' '}
             <a href="https://mobilemed.ai/" target="_blank" rel="noreferrer">
