@@ -1,11 +1,46 @@
+import { useCallback, useRef, useState } from 'react'
 import './ScanModal.css'
+import { SCAN_APP_URL } from './scanAppUrl'
 
 type ScanModalProps = {
   isOpen: boolean
   onClose: () => void
 }
 
+async function copyTextToClipboard(text: string): Promise<void> {
+  try {
+    await navigator.clipboard.writeText(text)
+    return
+  } catch {
+    // fallback (HTTP, старые браузеры)
+  }
+  const textarea = document.createElement('textarea')
+  textarea.value = text
+  textarea.style.position = 'fixed'
+  textarea.style.left = '-9999px'
+  textarea.setAttribute('readonly', '')
+  document.body.appendChild(textarea)
+  textarea.select()
+  document.execCommand('copy')
+  document.body.removeChild(textarea)
+}
+
 function ScanModal({ isOpen, onClose }: ScanModalProps) {
+  const [copyNotice, setCopyNotice] = useState(false)
+  const noticeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const handleCopyLink = useCallback(async () => {
+    await copyTextToClipboard(SCAN_APP_URL)
+    if (noticeTimeoutRef.current) {
+      clearTimeout(noticeTimeoutRef.current)
+    }
+    setCopyNotice(true)
+    noticeTimeoutRef.current = setTimeout(() => {
+      setCopyNotice(false)
+      noticeTimeoutRef.current = null
+    }, 2600)
+  }, [])
+
   if (!isOpen) {
     return null
   }
@@ -33,10 +68,20 @@ function ScanModal({ isOpen, onClose }: ScanModalProps) {
           />
         </div>
 
-        <button className="scan-modal__send" type="button">
+        <button
+          className="scan-modal__send"
+          type="button"
+          onClick={() => {
+            void handleCopyLink()
+          }}
+        >
           <img src="/tele.svg" alt="" aria-hidden="true" />
           Отправить ссылку
         </button>
+
+        <div className="scan-modal__notice-wrap" aria-live="polite" aria-atomic="true">
+          {copyNotice ? <p className="scan-modal__notice">Ссылка скопирована</p> : null}
+        </div>
 
         <button className="scan-modal__text-close" type="button" onClick={onClose}>
           Закрыть

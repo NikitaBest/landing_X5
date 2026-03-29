@@ -9,6 +9,7 @@ import FaqSection from './FaqSection'
 import FinalCtaSection from './FinalCtaSection'
 import FooterSection from './FooterSection'
 import ScanModal from './ScanModal'
+import { SCAN_APP_URL } from './scanAppUrl'
 
 const PHONE_MEDIA_QUERY = '(max-width: 767px)'
 
@@ -30,15 +31,19 @@ function App() {
 
   const handleOpenScanModal = useCallback(() => {
     if (isPhoneClient()) {
+      window.location.assign(SCAN_APP_URL)
       return
     }
 
     setIsScanModalOpen(true)
   }, [])
 
-  // Кнопка в верхнем хедере видна только на вебе (десктопе),
-  // поэтому не блокируем открытие модалки проверкой "phone client".
   const handleOpenScanModalWeb = useCallback(() => {
+    if (isPhoneClient()) {
+      window.location.assign(SCAN_APP_URL)
+      return
+    }
+
     setIsScanModalOpen(true)
   }, [])
 

@@ -105,6 +105,34 @@
   display: block;
 }
 
+.scan-modal__notice-wrap {
+  margin-top: 12px;
+  min-height: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scan-modal__notice {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.35;
+  font-weight: 600;
+  color: #2e7d32;
+  animation: scan-modal-notice-in 0.2s ease;
+}
+
+@keyframes scan-modal-notice-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .scan-modal__text-close {
   margin-top: 24px;
   border: 0;
