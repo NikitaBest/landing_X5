@@ -59,7 +59,7 @@ function FooterSection() {
         </div>
 
         <div className="footer__bottom">
-          <span>© 2026 NutriScan. ИИ. Все права защищены.</span>
+          <span>© 2026 МобилМед. ИИ. Все права защищены.</span>
           <span>
             Nutriscan, разработано в{' '}
             <a href="https://mobilemed.ai/" target="_blank" rel="noreferrer">

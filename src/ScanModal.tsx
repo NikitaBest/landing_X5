@@ -56,7 +56,7 @@ function ScanModal({ isOpen, onClose }: ScanModalProps) {
         <h3 className="scan-modal__title">
           Сканирование доступно
           <br />
-          на мобильных устройствах
+          ТОЛЬКО на смартфонах
         </h3>
         <p className="scan-modal__subtitle">Отсканируйте QR-код камерой телефона</p>
 
