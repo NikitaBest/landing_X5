@@ -1,21 +1,9 @@
-const SESSION_ID_KEY = 'landing_session_id'
 const AUTH_RESPONSE_KEY = 'landing_auth_response'
 const AUTH_ID_KEY = 'landing_auth_id'
 
 export type AuthLoginResponse = {
   id: string
   utm: string
-}
-
-export function getOrCreateSessionId(): string {
-  const existing = window.localStorage.getItem(SESSION_ID_KEY)
-  if (existing) {
-    return existing
-  }
-
-  const created = crypto.randomUUID()
-  window.localStorage.setItem(SESSION_ID_KEY, created)
-  return created
 }
 
 export function readStoredAuthResponse(): AuthLoginResponse | null {
@@ -43,15 +31,6 @@ export function storeAuthResponse(response: AuthLoginResponse): void {
 
 export function readStoredAuthId(): string {
   return window.localStorage.getItem(AUTH_ID_KEY) ?? ''
-}
-
-export function getScanLinkId(): string {
-  const authId = readStoredAuthId()
-  if (authId) {
-    return authId
-  }
-
-  return getOrCreateSessionId()
 }
 
 export function getUtmLabelFromLocation(search: string): string {

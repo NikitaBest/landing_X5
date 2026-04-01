@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from 'react'
 import './ScanModal.css'
 import { buildScanAppUrl } from './scanAppUrl'
-import { getScanLinkId } from './authSession'
+import { readStoredAuthId } from './authSession'
 
 type ScanModalProps = {
   isOpen: boolean
@@ -31,7 +31,7 @@ function ScanModal({ isOpen, onClose }: ScanModalProps) {
   const noticeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const handleCopyLink = useCallback(async () => {
-    await copyTextToClipboard(buildScanAppUrl(getScanLinkId()))
+    await copyTextToClipboard(buildScanAppUrl(readStoredAuthId()))
     if (noticeTimeoutRef.current) {
       clearTimeout(noticeTimeoutRef.current)
     }

@@ -10,7 +10,7 @@ import FinalCtaSection from './FinalCtaSection'
 import FooterSection from './FooterSection'
 import ScanModal from './ScanModal'
 import { buildScanAppUrl } from './scanAppUrl'
-import { getOrCreateSessionId, getScanLinkId, getUtmLabelFromLocation, storeAuthResponse } from './authSession'
+import { getUtmLabelFromLocation, readStoredAuthId, storeAuthResponse } from './authSession'
 
 const PHONE_MEDIA_QUERY = '(max-width: 767px)'
 
@@ -32,7 +32,7 @@ function App() {
 
   const handleOpenScanModal = useCallback(() => {
     if (isPhoneClient()) {
-      window.location.assign(buildScanAppUrl(getScanLinkId()))
+      window.location.assign(buildScanAppUrl(readStoredAuthId()))
       return
     }
 
@@ -41,7 +41,7 @@ function App() {
 
   const handleOpenScanModalWeb = useCallback(() => {
     if (isPhoneClient()) {
-      window.location.assign(buildScanAppUrl(getScanLinkId()))
+      window.location.assign(buildScanAppUrl(readStoredAuthId()))
       return
     }
 
@@ -60,7 +60,6 @@ function App() {
     }
 
     let isCancelled = false
-    const sessionId = getOrCreateSessionId()
     const utmLabel = getUtmLabelFromLocation(window.location.search)
 
     const loginBySession = async () => {
@@ -70,7 +69,7 @@ function App() {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ id: sessionId, utm: utmLabel }),
+          body: JSON.stringify({ id: null, utm: utmLabel }),
         })
 
         if (!response.ok) {
@@ -78,12 +77,25 @@ function App() {
           return
         }
 
-        const data = (await response.json()) as { id?: string; utm?: string }
+        const data = (await response.json()) as {
+          id?: string
+          utm?: string
+          user?: { id?: string; profile?: { utmSource?: string } | null } | null
+        }
         if (isCancelled) {
           return
         }
-        if (typeof data.id === 'string') {
-          storeAuthResponse({ id: data.id, utm: typeof data.utm === 'string' ? data.utm : '' })
+
+        const backendUserId = typeof data.user?.id === 'string' ? data.user.id : data.id
+        const backendUtm =
+          typeof data.utm === 'string'
+            ? data.utm
+            : typeof data.user?.profile?.utmSource === 'string'
+              ? data.user.profile.utmSource
+              : utmLabel
+
+        if (typeof backendUserId === 'string' && backendUserId.length > 0) {
+          storeAuthResponse({ id: backendUserId, utm: backendUtm })
         }
       } catch {
         console.error('[auth/login] Network error while sending request')
