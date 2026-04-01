@@ -53,6 +53,10 @@ function App() {
   }, [])
 
   useEffect(() => {
+    if (readStoredAuthId()) {
+      return
+    }
+
     const baseUrl = import.meta.env.VITE_API_BASE_URL as string | undefined
     if (!baseUrl) {
       console.error('[auth/login] VITE_API_BASE_URL is empty. Restart dev server after .env changes.')
