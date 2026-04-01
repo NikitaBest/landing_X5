@@ -1,9 +1,11 @@
 const AUTH_RESPONSE_KEY = 'landing_auth_response'
 const AUTH_ID_KEY = 'landing_auth_id'
+const AUTH_TOKEN_KEY = 'landing_auth_token'
 
 export type AuthLoginResponse = {
   id: string
   utm: string
+  token?: string
 }
 
 export function readStoredAuthResponse(): AuthLoginResponse | null {
@@ -27,26 +29,20 @@ export function readStoredAuthResponse(): AuthLoginResponse | null {
 export function storeAuthResponse(response: AuthLoginResponse): void {
   window.localStorage.setItem(AUTH_RESPONSE_KEY, JSON.stringify(response))
   window.localStorage.setItem(AUTH_ID_KEY, response.id)
+  if (typeof response.token === 'string' && response.token.length > 0) {
+    window.localStorage.setItem(AUTH_TOKEN_KEY, response.token)
+  }
 }
 
 export function readStoredAuthId(): string {
   return window.localStorage.getItem(AUTH_ID_KEY) ?? ''
 }
 
+export function readStoredAuthToken(): string {
+  return window.localStorage.getItem(AUTH_TOKEN_KEY) ?? ''
+}
+
 export function getUtmLabelFromLocation(search: string): string {
   const params = new URLSearchParams(search)
-  const utmValue = params.get('utm')
-  const infoValue = params.get('info')
-
-  if (utmValue && infoValue) {
-    return `utm=${utmValue}&info=${infoValue}`
-  }
-  if (utmValue) {
-    return `utm=${utmValue}`
-  }
-  if (infoValue) {
-    return `info=${infoValue}`
-  }
-
-  return ''
+  return params.get('utm') ?? ''
 }
