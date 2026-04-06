@@ -9,9 +9,30 @@ function FinalCtaSection({ onOpenScanModal }: FinalCtaSectionProps) {
   return (
     <section className="final-cta" id="final-cta">
       <div className="section final-cta__inner">
-        <img className="final-cta__berry" src="/Frame 2147236741.png" alt="" aria-hidden="true" />
-        <img className="final-cta__seeds" src="/Semkibloc3.png" alt="" aria-hidden="true" />
-        <img className="final-cta__avocado" src="/bloc3-2.png" alt="" aria-hidden="true" />
+        <img
+          className="final-cta__berry"
+          src="/Frame 2147236741.png"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+        />
+        <img
+          className="final-cta__seeds"
+          src="/Semkibloc3.png"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+        />
+        <img
+          className="final-cta__avocado"
+          src="/bloc3-2.png"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+        />
 
         <h2 className="final-cta__title">
           Ваш <span className="final-cta__title-accent">персональный рацион</span> по одному <br />
@@ -22,7 +43,9 @@ function FinalCtaSection({ onOpenScanModal }: FinalCtaSectionProps) {
 
         <Button
           className="final-cta__button"
-          startIcon={<img src="/Iconscan.svg" alt="" aria-hidden="true" />}
+          startIcon={
+            <img src="/Iconscan.svg" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+          }
           type="button"
           onClick={onOpenScanModal}
         >

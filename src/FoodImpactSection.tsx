@@ -44,6 +44,8 @@ function FoodImpactSection() {
               className="food-impact__plate food-impact__anim food-impact__anim--d4"
               src="/Tarelka.png"
               alt="Тост с авокадо и яйцом"
+              loading="lazy"
+              decoding="async"
             />
 
             <img
@@ -51,18 +53,24 @@ function FoodImpactSection() {
               src="/bloc3-1.png"
               alt=""
               aria-hidden="true"
+              loading="lazy"
+              decoding="async"
             />
             <img
               className="food-impact__avocado food-impact__anim food-impact__anim--d6"
               src="/bloc3-2.png"
               alt=""
               aria-hidden="true"
+              loading="lazy"
+              decoding="async"
             />
             <img
               className="food-impact__salt food-impact__anim food-impact__anim--d5"
               src="/bloc3-3.png"
               alt=""
               aria-hidden="true"
+              loading="lazy"
+              decoding="async"
             />
             <div className="food-impact__nutrition food-impact__anim food-impact__anim--d7">
               <h3>Пищевая ценность</h3>
@@ -94,6 +102,8 @@ function FoodImpactSection() {
               src="/Orehibloc3.png"
               alt=""
               aria-hidden="true"
+              loading="lazy"
+              decoding="async"
             />
             <div className="food-impact__toast-tag food-impact__anim food-impact__anim--d5">
               <h3>Тост с авокадо и яйцом</h3>
@@ -105,18 +115,24 @@ function FoodImpactSection() {
               src="/bloc3-6.svg"
               alt=""
               aria-hidden="true"
+              loading="lazy"
+              decoding="async"
             />
             <img
               className="food-impact__arrow-right food-impact__anim food-impact__anim--d6"
               src="/bloc3-6.svg"
               alt=""
               aria-hidden="true"
+              loading="lazy"
+              decoding="async"
             />
             <img
               className="food-impact__seeds food-impact__anim food-impact__anim--d7"
               src="/Semkibloc3.png"
               alt=""
               aria-hidden="true"
+              loading="lazy"
+              decoding="async"
             />
 
             <div className="food-impact__ingredients food-impact__anim food-impact__anim--d6">

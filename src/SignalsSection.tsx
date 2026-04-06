@@ -5,7 +5,12 @@ function SignalsSection() {
     <section className="signals" id="signals">
       <div className="section signals__inner">
         <div className="signals__media">
-          <img src="/bloc5.png" alt="Сканирование микросигналов лица" />
+          <img
+            src="/bloc5.png"
+            alt="Сканирование микросигналов лица"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
 
         <div className="signals__content">
@@ -24,7 +29,7 @@ function SignalsSection() {
           <div className="signals__list">
             <article className="signals__item">
               <span className="signals__icon" aria-hidden="true">
-                <img src="/bloc5-1.svg" alt="" />
+                <img src="/bloc5-1.svg" alt="" loading="lazy" decoding="async" />
               </span>
               <div>
                 <h3>Научно подтверждённый метод</h3>
@@ -36,7 +41,7 @@ function SignalsSection() {
 
             <article className="signals__item">
               <span className="signals__icon" aria-hidden="true">
-                <img src="/bloc5-2.svg" alt="" />
+                <img src="/bloc5-2.svg" alt="" loading="lazy" decoding="async" />
               </span>
               <div>
                 <h3>Персонализация</h3>
@@ -48,7 +53,7 @@ function SignalsSection() {
 
             <article className="signals__item">
               <span className="signals__icon" aria-hidden="true">
-                <img src="/bloc5-3.svg" alt="" />
+                <img src="/bloc5-3.svg" alt="" loading="lazy" decoding="async" />
               </span>
               <div>
                 <h3>Рекомендации ≠ диагноз</h3>

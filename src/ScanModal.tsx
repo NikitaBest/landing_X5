@@ -66,6 +66,8 @@ function ScanModal({ isOpen, onClose }: ScanModalProps) {
             className="scan-modal__qr"
             src="/qrcode.png"
             alt="QR-код для открытия NutriScan на телефоне"
+            loading="lazy"
+            decoding="async"
           />
         </div>
 
@@ -76,7 +78,7 @@ function ScanModal({ isOpen, onClose }: ScanModalProps) {
             void handleCopyLink()
           }}
         >
-          <img src="/tele.svg" alt="" aria-hidden="true" />
+          <img src="/tele.svg" alt="" aria-hidden="true" loading="lazy" decoding="async" />
           Отправить ссылку
         </button>
 

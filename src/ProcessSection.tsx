@@ -40,7 +40,7 @@ function ProcessSection() {
         <div className="process__grid">
           <article className="process-card process-card--reveal process-card--d1">
             <span className="process-card__icon" aria-hidden="true">
-              <img src="/bloc2-1.svg" alt="" />
+              <img src="/bloc2-1.svg" alt="" loading="lazy" decoding="async" />
             </span>
             <h3>Пройдите чекап</h3>
             <p>Наведите селфи-камеру - всё остальное сделает ИИ.</p>
@@ -48,12 +48,12 @@ function ProcessSection() {
           </article>
 
           <span className="process__arrow process-card--reveal process-card--d2" aria-hidden="true">
-            <img src="/strl2.svg" alt="" />
+            <img src="/strl2.svg" alt="" loading="lazy" decoding="async" />
           </span>
 
           <article className="process-card process-card--active process-card--reveal process-card--d3">
             <span className="process-card__icon" aria-hidden="true">
-              <img src="/bloc2-2.svg" alt="" />
+              <img src="/bloc2-2.svg" alt="" loading="lazy" decoding="async" />
             </span>
             <h3>Состояние здоровья</h3>
             <p>Узнайте 20+ биомаркеров и что именно влияет на состояние вашего организма.</p>
@@ -61,12 +61,12 @@ function ProcessSection() {
           </article>
 
           <span className="process__arrow process-card--reveal process-card--d4" aria-hidden="true">
-            <img src="/strl2.svg" alt="" />
+            <img src="/strl2.svg" alt="" loading="lazy" decoding="async" />
           </span>
 
           <article className="process-card process-card--reveal process-card--d5">
             <span className="process-card__icon" aria-hidden="true">
-              <img src="/bloc2-3.svg" alt="" />
+              <img src="/bloc2-3.svg" alt="" loading="lazy" decoding="async" />
             </span>
             <h3>Ваш рацион готов</h3>
             <p>Подобран с учётом вашего состояния для улучшения самочувствия и снижения рисков здоровья.</p>

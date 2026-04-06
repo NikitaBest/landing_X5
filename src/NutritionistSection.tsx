@@ -17,7 +17,14 @@ function NutritionistSection() {
           </p>
 
           <figure className="nutritionist__quote" aria-label="Цитата специалиста">
-            <img className="nutritionist__quote-mark" src="/gridicons_quote.svg" alt="" aria-hidden="true" />
+            <img
+              className="nutritionist__quote-mark"
+              src="/gridicons_quote.svg"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+            />
 
             <blockquote className="nutritionist__quote-text">
               Моя задача — гарантировать, что алгоритмы интерпретируют ваши результаты сканирования с
@@ -26,7 +33,14 @@ function NutritionistSection() {
             </blockquote>
 
             <figcaption className="nutritionist__person">
-              <img className="nutritionist__avatar" src="/fotn.png" alt="" aria-hidden="true" />
+              <img
+                className="nutritionist__avatar"
+                src="/fotn.png"
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                decoding="async"
+              />
               <div className="nutritionist__person-meta">
                 <div className="nutritionist__person-name">Наталья Кузнецова</div>
                 <div className="nutritionist__person-role">Клинический нутрициолог,</div>
@@ -39,12 +53,30 @@ function NutritionistSection() {
         </div>
 
         <div className="nutritionist__media" aria-hidden="true">
-          <img className="nutritionist__mobile-image" src="/mobii.png" alt="" />
+          <img className="nutritionist__mobile-image" src="/mobii.png" alt="" loading="lazy" decoding="async" />
 
-          <img className="nutritionist__badge nutritionist__badge--behind-left-bottom" src="/blocii-3.png" alt="" />
-          <img className="nutritionist__image" src="/fotnutr.png" alt="" />
-          <img className="nutritionist__badge nutritionist__badge--left" src="/blocii-2.png" alt="" />
-          <img className="nutritionist__badge nutritionist__badge--right" src="/blocii-1.png" alt="" />
+          <img
+            className="nutritionist__badge nutritionist__badge--behind-left-bottom"
+            src="/blocii-3.png"
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
+          <img className="nutritionist__image" src="/fotnutr.png" alt="" loading="lazy" decoding="async" />
+          <img
+            className="nutritionist__badge nutritionist__badge--left"
+            src="/blocii-2.png"
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            className="nutritionist__badge nutritionist__badge--right"
+            src="/blocii-1.png"
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       </div>
     </section>
