@@ -337,6 +337,95 @@ h1 {
   line-height: 1.2;
 }
 
+.hero-heart-card {
+  position: absolute;
+  z-index: 0;
+  /* На широких экранах сильнее выносим вправо — иначе почти весь блок под мокапом */
+  right: clamp(-120px, -11vw, -56px);
+  top: clamp(0%, 1.5vw, 3.5%);
+  width: clamp(108px, 28vw, 148px);
+  padding: 7px 9px 8px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow:
+    0 8px 22px rgba(35, 55, 45, 0.12),
+    0 2px 6px rgba(35, 55, 45, 0.06);
+  box-sizing: border-box;
+  pointer-events: none;
+  text-align: center;
+}
+
+.hero-heart-card__title {
+  font-size: 9px;
+  font-weight: 700;
+  color: #233729;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.hero-heart-card__value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a2833;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 5px;
+}
+
+.hero-heart-card__badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #fde8ea;
+  color: #b71c3a;
+  font-size: 8px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+
+.hero-heart-card__bar {
+  display: flex;
+  height: 4px;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.hero-heart-card__bar-seg {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+}
+
+.hero-heart-card__bar-seg--low {
+  background: #4caf50;
+}
+
+.hero-heart-card__bar-seg--mid {
+  background: #ffb300;
+}
+
+.hero-heart-card__bar-seg--high {
+  background: #e57373;
+}
+
+.hero-heart-card__scale {
+  display: flex;
+  justify-content: space-between;
+  gap: 2px;
+  font-size: 7px;
+  font-weight: 500;
+  color: #6b7780;
+  line-height: 1.2;
+}
+
+.hero-heart-card__scale span {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+}
+
 .hero-phone {
   position: relative;
   z-index: 2;
@@ -347,9 +436,9 @@ h1 {
   transform-origin: center right;
   line-height: 0;
   /* Проём «экрана» в мокапе: общая подложка + слой видео (прозрачность PNG не показывает контент сзади) */
-  --hero-phone-screen-inset-x: 3.45%;
-  --hero-phone-screen-inset-top: 0.92%;
-  --hero-phone-screen-inset-bottom: 0.72%;
+  --hero-phone-screen-inset-x: 2.55%;
+  --hero-phone-screen-inset-top: 0.52%;
+  --hero-phone-screen-inset-bottom: 0.42%;
   --hero-phone-screen-radius: clamp(18px, 5.2vw, 32px);
   isolation: isolate;
 }
@@ -471,9 +560,10 @@ h1 {
   background: #29b6f6;
 }
 
+/* Рамка PNG выше видео: обводка перекрывает прямоугольные углы ролика, в проём смотрим сквозь прозрачность */
 .hero-phone__frame {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: block;
   width: 100%;
   height: auto;
@@ -482,7 +572,7 @@ h1 {
 
 .hero-phone__screen {
   position: absolute;
-  z-index: 2;
+  z-index: 1;
   left: var(--hero-phone-screen-inset-x);
   right: var(--hero-phone-screen-inset-x);
   top: var(--hero-phone-screen-inset-top);
@@ -490,10 +580,25 @@ h1 {
   border-radius: var(--hero-phone-screen-radius);
   overflow: hidden;
   background: #fff;
+  background-color: #fff;
+  isolation: isolate;
+  pointer-events: none;
+}
+
+/* Слой под роликом — закрывает прозрачность/просветы при отрисовке <video> */
+.hero-phone__screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #fff;
+  border-radius: inherit;
   pointer-events: none;
 }
 
 .hero-phone__video {
+  position: relative;
+  z-index: 1;
   display: block;
   width: 100%;
   height: 100%;
@@ -501,6 +606,7 @@ h1 {
   min-height: 100%;
   object-fit: cover;
   object-position: center center;
+  background-color: #fff;
 }
 
 .mobile-menu {
@@ -612,6 +718,39 @@ h1 {
   .hero-bp-card__badge {
     font-size: 9px;
     padding: 3px 8px;
+  }
+
+  .hero-heart-card {
+    right: max(-58px, -12vw);
+    top: 2.5%;
+    width: clamp(96px, 26vw, 118px);
+    padding: 6px 8px 7px;
+    border-radius: 12px;
+  }
+
+  .hero-heart-card__title {
+    font-size: 9px;
+    margin-bottom: 3px;
+  }
+
+  .hero-heart-card__value {
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+
+  .hero-heart-card__badge {
+    font-size: 7px;
+    padding: 2px 7px;
+    margin-bottom: 5px;
+  }
+
+  .hero-heart-card__bar {
+    height: 4px;
+    margin-bottom: 3px;
+  }
+
+  .hero-heart-card__scale {
+    font-size: 6px;
   }
 
   .hero-nutrition-card {
@@ -876,6 +1015,40 @@ h1 {
     padding: 3px 7px;
   }
 
+  .hero-heart-card {
+    right: max(-48px, -10.5vw);
+    top: 2%;
+    width: min(88px, 28vw);
+    padding: 6px 7px 6px;
+    border-radius: 11px;
+  }
+
+  .hero-heart-card__title {
+    font-size: 8px;
+    margin-bottom: 3px;
+  }
+
+  .hero-heart-card__value {
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+
+  .hero-heart-card__badge {
+    font-size: 6px;
+    padding: 2px 6px;
+    margin-bottom: 5px;
+  }
+
+  .hero-heart-card__bar {
+    height: 3px;
+    margin-bottom: 3px;
+  }
+
+  .hero-heart-card__scale {
+    font-size: 5px;
+    gap: 1px;
+  }
+
   .hero-nutrition-card {
     width: min(156px, 56vw);
     right: -16px;
@@ -952,6 +1125,39 @@ h1 {
   .hero-bp-card__badge {
     font-size: 8px;
     padding: 2px 6px;
+  }
+
+  .hero-heart-card {
+    right: max(-42px, -9vw);
+    top: 1%;
+    width: min(80px, 32vw);
+    padding: 5px 6px 6px;
+    border-radius: 10px;
+  }
+
+  .hero-heart-card__title {
+    font-size: 7px;
+    margin-bottom: 2px;
+  }
+
+  .hero-heart-card__value {
+    font-size: 14px;
+    margin-bottom: 3px;
+  }
+
+  .hero-heart-card__badge {
+    font-size: 6px;
+    padding: 2px 5px;
+    margin-bottom: 4px;
+  }
+
+  .hero-heart-card__bar {
+    height: 3px;
+    margin-bottom: 2px;
+  }
+
+  .hero-heart-card__scale {
+    font-size: 5px;
   }
 
   .hero-nutrition-card {

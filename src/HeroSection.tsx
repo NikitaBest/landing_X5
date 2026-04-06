@@ -121,6 +121,21 @@ function HeroSection({ onOpenScanModal, onOpenScanModalWeb }: HeroSectionProps) 
               <div className="hero-bp-card__value">145/95</div>
               <div className="hero-bp-card__badge">Повышено</div>
             </aside>
+            <aside className="hero-heart-card" aria-hidden="true">
+              <div className="hero-heart-card__title">Возраст сердца</div>
+              <div className="hero-heart-card__value">48</div>
+              <div className="hero-heart-card__badge">Требует внимания</div>
+              <div className="hero-heart-card__bar" role="presentation">
+                <span className="hero-heart-card__bar-seg hero-heart-card__bar-seg--low" />
+                <span className="hero-heart-card__bar-seg hero-heart-card__bar-seg--mid" />
+                <span className="hero-heart-card__bar-seg hero-heart-card__bar-seg--high" />
+              </div>
+              <div className="hero-heart-card__scale">
+                <span>до 30</span>
+                <span>31–37</span>
+                <span>37+</span>
+              </div>
+            </aside>
             <div className="hero-phone">
               <img src="/iPhone.png" alt="" className="hero-phone__frame" aria-hidden />
               <div className="hero-phone__screen">
