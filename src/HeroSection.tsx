@@ -110,8 +110,58 @@ function HeroSection({ onOpenScanModal, onOpenScanModalWeb }: HeroSectionProps) 
           </div>
         </div>
         <div className="hero-image-wrap">
-          <img src="/Group 1.png" alt="Превью приложения NutriScan" className="hero-image" />
+          <div className="hero-visual">
+            <aside className="hero-bp-card" aria-hidden="true">
+              <div className="hero-bp-card__header">
+                <span className="hero-bp-card__icon">
+                  <img src="/dav.svg" alt="" className="hero-bp-card__icon-img" aria-hidden />
+                </span>
+                <span className="hero-bp-card__label">Давление</span>
+              </div>
+              <div className="hero-bp-card__value">145/95</div>
+              <div className="hero-bp-card__badge">Повышено</div>
+            </aside>
+            <div className="hero-phone">
+              <img src="/iPhone.png" alt="" className="hero-phone__frame" aria-hidden />
+              <div className="hero-phone__screen">
+                <video
+                  className="hero-phone__video"
+                  src="/IMG_5365.MP4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  aria-label="Демонстрация интерфейса NutriScan в приложении"
+                />
+              </div>
+            </div>
+            <aside className="hero-nutrition-card" aria-hidden="true">
+              <div className="hero-nutrition-card__title">Пищевая ценность</div>
+              <div className="hero-nutrition-card__calories">
+                <span className="hero-nutrition-card__calories-value">280</span>
+                <span className="hero-nutrition-card__calories-unit"> ккал</span>
+              </div>
+              <div className="hero-nutrition-card__bar" role="presentation">
+                <span className="hero-nutrition-card__bar-seg hero-nutrition-card__bar-seg--protein" />
+                <span className="hero-nutrition-card__bar-seg hero-nutrition-card__bar-seg--fat" />
+                <span className="hero-nutrition-card__bar-seg hero-nutrition-card__bar-seg--carb" />
+              </div>
+              <div className="hero-nutrition-card__legend">
+                <span className="hero-nutrition-card__legend-item hero-nutrition-card__legend-item--protein">
+                  Белки 12г
+                </span>
+                <span className="hero-nutrition-card__legend-item hero-nutrition-card__legend-item--fat">
+                  Жиры 18г
+                </span>
+                <span className="hero-nutrition-card__legend-item hero-nutrition-card__legend-item--carb">
+                  Углев. 45г
+                </span>
+              </div>
+            </aside>
+          </div>
         </div>
+
       </main>
     </>
   )

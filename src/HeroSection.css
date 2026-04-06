@@ -88,7 +88,7 @@ p {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(420px, 560px);
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 380px);
   align-items: center;
   gap: clamp(24px, 3vw, 48px);
   padding-top: clamp(26px, 4vw, 64px);
@@ -249,8 +249,8 @@ h1 {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 175%;
-  height: 175%;
+  width: 130%;
+  height: 130%;
   z-index: 0;
   pointer-events: none;
   background:
@@ -260,15 +260,247 @@ h1 {
   transform: translate(-50%, -50%) translateZ(0);
 }
 
-.hero-image {
+.hero-visual {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  margin-right: 0;
+  z-index: 1;
+}
+
+.hero-bp-card {
+  position: absolute;
+  z-index: 0;
+  left: clamp(-52px, -9vw, -20px);
+  top: 42%;
+  transform: translateY(-50%);
+  width: clamp(118px, 30vw, 152px);
+  padding: 10px 12px 11px;
+  border-radius: 18px;
+  background: #fdf8f0;
+  box-shadow:
+    0 8px 22px rgba(55, 48, 35, 0.12),
+    0 2px 6px rgba(55, 48, 35, 0.06);
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.hero-bp-card__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.hero-bp-card__icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #fff3e0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hero-bp-card__icon-img {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+.hero-bp-card__label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #4a5560;
+  line-height: 1.2;
+}
+
+.hero-bp-card__value {
+  font-size: 21px;
+  font-weight: 700;
+  color: #1e2822;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.hero-bp-card__badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 193, 107, 0.45);
+  color: #b35c00;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.hero-phone {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: min(100%, 380px);
+  margin: 0;
+  transform: translateX(8px) scale(0.82);
+  transform-origin: center right;
+  line-height: 0;
+  /* Проём «экрана» в мокапе: общая подложка + слой видео (прозрачность PNG не показывает контент сзади) */
+  --hero-phone-screen-inset-x: 3.45%;
+  --hero-phone-screen-inset-top: 0.92%;
+  --hero-phone-screen-inset-bottom: 0.72%;
+  --hero-phone-screen-radius: clamp(18px, 5.2vw, 32px);
+  isolation: isolate;
+}
+
+.hero-phone::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  left: var(--hero-phone-screen-inset-x);
+  right: var(--hero-phone-screen-inset-x);
+  top: var(--hero-phone-screen-inset-top);
+  bottom: var(--hero-phone-screen-inset-bottom);
+  border-radius: var(--hero-phone-screen-radius);
+  background: #fff;
+  pointer-events: none;
+}
+
+.hero-nutrition-card {
+  position: absolute;
+  z-index: 4;
+  right: clamp(-44px, -7.5vw, -22px);
+  bottom: clamp(0%, 1.5vw, 4%);
+  width: clamp(162px, 46vw, 216px);
+  padding: 8px 10px 9px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow:
+    0 10px 28px rgba(35, 55, 45, 0.12),
+    0 2px 8px rgba(35, 55, 45, 0.06);
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.hero-nutrition-card__title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #233729;
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+
+.hero-nutrition-card__calories {
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.hero-nutrition-card__calories-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a2e1a;
+}
+
+.hero-nutrition-card__calories-unit {
+  font-size: 11px;
+  font-weight: 500;
+  color: #7a8a82;
+}
+
+.hero-nutrition-card__bar {
+  display: flex;
+  height: 6px;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.hero-nutrition-card__bar-seg {
+  display: block;
+  height: 100%;
+}
+
+.hero-nutrition-card__bar-seg--protein {
+  flex: 12;
+  background: #4caf50;
+}
+
+.hero-nutrition-card__bar-seg--fat {
+  flex: 18;
+  background: #ffb300;
+}
+
+.hero-nutrition-card__bar-seg--carb {
+  flex: 45;
+  background: #29b6f6;
+}
+
+.hero-nutrition-card__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 7px;
+  font-size: 9px;
+  color: #5c6d66;
+  line-height: 1.25;
+}
+
+.hero-nutrition-card__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.hero-nutrition-card__legend-item::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.hero-nutrition-card__legend-item--protein::before {
+  background: #4caf50;
+}
+
+.hero-nutrition-card__legend-item--fat::before {
+  background: #ffb300;
+}
+
+.hero-nutrition-card__legend-item--carb::before {
+  background: #29b6f6;
+}
+
+.hero-phone__frame {
   position: relative;
   z-index: 1;
-  width: min(100%, 760px);
-  height: auto;
   display: block;
-  transform: translateX(40px) scale(1.05);
-  transform-origin: center right;
-  max-width: 100%;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+.hero-phone__screen {
+  position: absolute;
+  z-index: 2;
+  left: var(--hero-phone-screen-inset-x);
+  right: var(--hero-phone-screen-inset-x);
+  top: var(--hero-phone-screen-inset-top);
+  bottom: var(--hero-phone-screen-inset-bottom);
+  border-radius: var(--hero-phone-screen-radius);
+  overflow: hidden;
+  background: #fff;
+  pointer-events: none;
+}
+
+.hero-phone__video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: center center;
 }
 
 .mobile-menu {
@@ -333,11 +565,79 @@ h1 {
     max-width: 100%;
   }
 
-  .hero-image {
+  .hero-visual {
+    margin-inline: auto;
+    margin-right: auto;
+  }
+
+  .hero-phone {
     transform: none;
     transform-origin: center;
-    width: min(100%, 560px);
+    max-width: min(100%, 220px);
     margin-inline: auto;
+  }
+
+  .hero-bp-card {
+    left: max(-64px, -14vw);
+    top: 46%;
+    width: clamp(104px, 26vw, 136px);
+    padding: 8px 10px 9px;
+    border-radius: 15px;
+  }
+
+  .hero-bp-card__header {
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+
+  .hero-bp-card__icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .hero-bp-card__icon-img {
+    width: 15px;
+    height: 15px;
+  }
+
+  .hero-bp-card__label {
+    font-size: 10px;
+  }
+
+  .hero-bp-card__value {
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+
+  .hero-bp-card__badge {
+    font-size: 9px;
+    padding: 3px 8px;
+  }
+
+  .hero-nutrition-card {
+    right: -22px;
+    bottom: -0.5%;
+    width: min(172px, 52vw);
+    padding: 7px 9px 8px;
+    border-radius: 12px;
+  }
+
+  .hero-nutrition-card__title {
+    font-size: 10px;
+    margin-bottom: 4px;
+  }
+
+  .hero-nutrition-card__calories-value {
+    font-size: 14px;
+  }
+
+  .hero-nutrition-card__calories-unit {
+    font-size: 10px;
+  }
+
+  .hero-nutrition-card__legend {
+    font-size: 8px;
+    gap: 3px 6px;
   }
 
   h1 {
@@ -555,10 +855,37 @@ h1 {
     height: 210%;
   }
 
-  .hero-image {
-    width: min(100%, 420px);
-    max-width: 100%;
+  .hero-phone {
+    max-width: min(100%, 190px);
     margin-inline: auto;
+  }
+
+  .hero-bp-card {
+    left: max(-56px, -12vw);
+    top: 47%;
+    width: min(100px, 30vw);
+    padding: 7px 9px 8px;
+    border-radius: 13px;
+  }
+
+  .hero-bp-card__value {
+    font-size: 16px;
+  }
+
+  .hero-bp-card__badge {
+    padding: 3px 7px;
+  }
+
+  .hero-nutrition-card {
+    width: min(156px, 56vw);
+    right: -16px;
+    bottom: -2%;
+    padding: 6px 8px 7px;
+  }
+
+  .hero-nutrition-card__bar {
+    height: 5px;
+    margin-bottom: 6px;
   }
 }
 
@@ -586,8 +913,65 @@ h1 {
     line-height: 1.45;
   }
 
-  .hero-image {
-    width: min(100%, 360px);
+  .hero-phone {
+    max-width: min(100%, 176px);
+  }
+
+  .hero-bp-card {
+    left: max(-50px, -10.5vw);
+    top: 48%;
+    width: min(92px, 34vw);
+    padding: 6px 8px 7px;
+    border-radius: 12px;
+  }
+
+  .hero-bp-card__header {
+    gap: 5px;
+    margin-bottom: 5px;
+  }
+
+  .hero-bp-card__icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .hero-bp-card__icon-img {
+    width: 13px;
+    height: 13px;
+  }
+
+  .hero-bp-card__label {
+    font-size: 9px;
+  }
+
+  .hero-bp-card__value {
+    font-size: 15px;
+    margin-bottom: 5px;
+  }
+
+  .hero-bp-card__badge {
+    font-size: 8px;
+    padding: 2px 6px;
+  }
+
+  .hero-nutrition-card {
+    width: min(142px, 62vw);
+    right: -12px;
+    bottom: -3.5%;
+    padding: 5px 6px 7px;
+    border-radius: 11px;
+  }
+
+  .hero-nutrition-card__title {
+    font-size: 9px;
+  }
+
+  .hero-nutrition-card__calories-value {
+    font-size: 12px;
+  }
+
+  .hero-nutrition-card__legend {
+    font-size: 7px;
   }
 
   .hero-tag {
