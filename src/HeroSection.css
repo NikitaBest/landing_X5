@@ -105,6 +105,9 @@ h1 {
   line-height: 1.04;
   letter-spacing: -0.02em;
   margin-bottom: 22px;
+  opacity: 0;
+  animation: hero-content-enter-up 520ms ease-out forwards;
+  will-change: transform, opacity;
 }
 
 .text-accent {
@@ -112,6 +115,10 @@ h1 {
 }
 
 @media (min-width: 981px) {
+  .hero-visual {
+    transform: translateX(clamp(-88px, -6.8vw, -40px));
+  }
+
   .text-accent {
     white-space: nowrap;
     display: inline-block;
@@ -154,6 +161,9 @@ h1 {
   line-height: 1.4;
   color: #5f7a6a;
   margin-bottom: 26px;
+  opacity: 0;
+  animation: hero-content-enter-up 520ms ease-out 90ms forwards;
+  will-change: transform, opacity;
 }
 
 .hero-tags {
@@ -161,6 +171,9 @@ h1 {
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 28px;
+  opacity: 0;
+  animation: hero-content-enter-up 520ms ease-out 170ms forwards;
+  will-change: transform, opacity;
 }
 
 .hero-tag {
@@ -196,6 +209,9 @@ h1 {
   gap: 18px;
   flex-wrap: wrap;
   min-width: 0;
+  opacity: 0;
+  animation: hero-content-enter-soft 520ms ease-out 240ms forwards;
+  will-change: opacity;
 }
 
 .menu-scan-button {
@@ -264,9 +280,84 @@ h1 {
   position: relative;
   width: fit-content;
   max-width: 100%;
+  min-height: clamp(330px, 52vw, 500px);
   margin: 0 auto;
   margin-right: 0;
   z-index: 1;
+}
+
+.hero-media-placeholder {
+  width: min(100%, 315px);
+  aspect-ratio: 9 / 19;
+  border-radius: 42px;
+  background:
+    linear-gradient(90deg, rgba(235, 240, 236, 0.75) 25%, rgba(248, 250, 249, 0.95) 50%, rgba(235, 240, 236, 0.75) 75%)
+      0 0 / 220% 100% no-repeat,
+    #eef3f0;
+  box-shadow:
+    inset 0 0 0 1px rgba(100, 138, 116, 0.18),
+    0 10px 24px rgba(35, 55, 45, 0.08);
+  animation: hero-placeholder-shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes hero-placeholder-shimmer {
+  from {
+    background-position: 100% 0, 0 0;
+  }
+  to {
+    background-position: -100% 0, 0 0;
+  }
+}
+
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-bp-enter {
+  from {
+    opacity: 0;
+    transform: translate(-8px, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes hero-card-enter-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-content-enter-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-content-enter-soft {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .hero-bp-card {
@@ -284,6 +375,9 @@ h1 {
     0 2px 6px rgba(55, 48, 35, 0.06);
   box-sizing: border-box;
   pointer-events: none;
+  opacity: 0;
+  animation: hero-bp-enter 520ms ease-out 120ms forwards;
+  will-change: transform, opacity;
 }
 
 .hero-bp-card__header {
@@ -353,6 +447,9 @@ h1 {
   box-sizing: border-box;
   pointer-events: none;
   text-align: center;
+  opacity: 0;
+  animation: hero-card-enter-up 520ms ease-out 200ms forwards;
+  will-change: transform, opacity;
 }
 
 .hero-heart-card__title {
@@ -441,6 +538,9 @@ h1 {
   --hero-phone-screen-inset-bottom: 0.42%;
   --hero-phone-screen-radius: clamp(18px, 5.2vw, 32px);
   isolation: isolate;
+  opacity: 0;
+  animation: hero-fade-in 520ms ease-out 60ms forwards;
+  will-change: opacity;
 }
 
 .hero-phone::before {
@@ -470,6 +570,9 @@ h1 {
     0 2px 8px rgba(35, 55, 45, 0.06);
   box-sizing: border-box;
   pointer-events: none;
+  opacity: 0;
+  animation: hero-card-enter-up 520ms ease-out 280ms forwards;
+  will-change: transform, opacity;
 }
 
 .hero-nutrition-card__title {
@@ -672,6 +775,7 @@ h1 {
   }
 
   .hero-visual {
+    min-height: clamp(230px, 66vw, 330px);
     margin-inline: auto;
     margin-right: auto;
   }
@@ -994,6 +1098,10 @@ h1 {
     height: 210%;
   }
 
+  .hero-visual {
+    min-height: 250px;
+  }
+
   .hero-phone {
     max-width: min(100%, 190px);
     margin-inline: auto;
@@ -1088,6 +1196,10 @@ h1 {
 
   .hero-phone {
     max-width: min(100%, 176px);
+  }
+
+  .hero-visual {
+    min-height: 225px;
   }
 
   .hero-bp-card {
@@ -1224,4 +1336,38 @@ h1 {
 
 .lead-break {
   display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-media-placeholder {
+    animation: none;
+  }
+
+  h1,
+  .lead,
+  .hero-tags,
+  .actions,
+  .hero-phone,
+  .hero-bp-card,
+  .hero-heart-card,
+  .hero-nutrition-card {
+    animation: none;
+    opacity: 1;
+    will-change: auto;
+  }
+
+  .hero-bp-card {
+    transform: translateY(-50%);
+  }
+
+  .hero-heart-card,
+  .hero-nutrition-card {
+    transform: none;
+  }
+
+  h1,
+  .lead,
+  .hero-tags {
+    transform: none;
+  }
 }
