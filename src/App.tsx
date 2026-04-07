@@ -53,10 +53,6 @@ function App() {
   }, [])
 
   useEffect(() => {
-    if (readStoredAuthId()) {
-      return
-    }
-
     const baseUrl = import.meta.env.VITE_API_BASE_URL as string | undefined
     if (!baseUrl) {
       console.error('[auth/login] VITE_API_BASE_URL is empty. Restart dev server after .env changes.')
@@ -65,6 +61,7 @@ function App() {
 
     let isCancelled = false
     const utmLabel = getUtmLabelFromLocation(window.location.search)
+    const storedAuthId = readStoredAuthId()
 
     const loginBySession = async () => {
       try {
@@ -73,7 +70,7 @@ function App() {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ id: null, utm: utmLabel }),
+          body: JSON.stringify({ id: storedAuthId || null, utm: utmLabel }),
         })
 
         if (!response.ok) {
