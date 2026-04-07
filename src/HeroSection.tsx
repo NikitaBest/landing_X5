@@ -13,6 +13,7 @@ function HeroSection({ onOpenScanModal, onOpenScanModalWeb }: HeroSectionProps) 
   const [isVideoReady, setIsVideoReady] = useState(false)
   const [isHeroMediaVisible, setIsHeroMediaVisible] = useState(false)
   const [areHeroCardsVisible, setAreHeroCardsVisible] = useState(false)
+  const [isHeroVideoPlayable, setIsHeroVideoPlayable] = useState(false)
 
   useEffect(() => {
     let isCancelled = false
@@ -72,6 +73,12 @@ function HeroSection({ onOpenScanModal, onOpenScanModalWeb }: HeroSectionProps) 
       setIsHeroMediaVisible(true)
     }
   }, [isFrameReady, isVideoReady])
+
+  useEffect(() => {
+    if (isVideoReady) {
+      setIsHeroVideoPlayable(true)
+    }
+  }, [isVideoReady])
 
   useEffect(() => {
     if (!isHeroMediaVisible) {
@@ -194,6 +201,7 @@ function HeroSection({ onOpenScanModal, onOpenScanModalWeb }: HeroSectionProps) 
                 <div className="hero-phone">
                   <img src="/iPhone.png" alt="" className="hero-phone__frame" aria-hidden />
                   <div className="hero-phone__screen">
+                    {!isHeroVideoPlayable ? <div className="hero-phone__loader" aria-hidden="true" /> : null}
                     <video
                       className="hero-phone__video"
                       src="/IMG_5365.MP4"
@@ -202,6 +210,8 @@ function HeroSection({ onOpenScanModal, onOpenScanModalWeb }: HeroSectionProps) 
                       muted
                       playsInline
                       preload="auto"
+                      onLoadedData={() => setIsHeroVideoPlayable(true)}
+                      onCanPlay={() => setIsHeroVideoPlayable(true)}
                       aria-label="Демонстрация интерфейса NutriScan в приложении"
                     />
                   </div>
