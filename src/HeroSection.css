@@ -568,7 +568,7 @@ h1 {
   position: absolute;
   z-index: 4;
   right: clamp(-44px, -7.5vw, -22px);
-  bottom: clamp(0%, 1.5vw, 4%);
+  bottom: clamp(-3%, -0.5vw, 0.5%);
   width: clamp(162px, 46vw, 216px);
   padding: 8px 10px 9px;
   border-radius: 14px;
@@ -892,7 +892,7 @@ h1 {
 
   .hero-nutrition-card {
     right: -22px;
-    bottom: -0.5%;
+    bottom: -10%;
     width: min(172px, 52vw);
     padding: 7px 9px 8px;
     border-radius: 12px;
@@ -1193,7 +1193,7 @@ h1 {
   .hero-nutrition-card {
     width: min(156px, 56vw);
     right: -16px;
-    bottom: -2%;
+    bottom: -14%;
     padding: 6px 8px 7px;
   }
 
@@ -1308,7 +1308,7 @@ h1 {
   .hero-nutrition-card {
     width: min(142px, 62vw);
     right: -12px;
-    bottom: -3.5%;
+    bottom: -16%;
     padding: 5px 6px 7px;
     border-radius: 11px;
   }
