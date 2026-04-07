@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './FaqSection.css'
 
 type FaqItem = {
+  id?: string
   question: string
   answer: string
 }
@@ -47,6 +48,7 @@ const FAQ_ITEMS: FaqItem[] = [
     answer: 'Да, это бесплатно для пользователя.',
   },
   {
+    id: 'metrics',
     question: 'Какие показатели анализируются?',
     answer:
       'Сервис анализирует более 20 биомаркеров, включая пульс, стресс, давление, риски уровня гемоглобина и холестерина, а также другие показатели и риски здоровья, связанные с состоянием организма.',
@@ -61,6 +63,24 @@ const FAQ_ITEMS: FaqItem[] = [
 function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
+  useEffect(() => {
+    const onOpenFaqItem = (event: Event) => {
+      const customEvent = event as CustomEvent<{ id?: string }>
+      const targetId = customEvent.detail?.id
+      if (!targetId) {
+        return
+      }
+
+      const nextIndex = FAQ_ITEMS.findIndex((item) => item.id === targetId)
+      if (nextIndex !== -1) {
+        setOpenIndex(nextIndex)
+      }
+    }
+
+    window.addEventListener('open-faq-item', onOpenFaqItem)
+    return () => window.removeEventListener('open-faq-item', onOpenFaqItem)
+  }, [])
+
   return (
     <section className="faq" id="faq">
       <div className="section faq__inner">
@@ -71,7 +91,11 @@ function FaqSection() {
             const isOpen = openIndex === index
 
             return (
-              <article className={`faq__item ${isOpen ? 'faq__item--open' : ''}`} key={item.question}>
+              <article
+                id={item.id ? `faq-${item.id}` : undefined}
+                className={`faq__item ${isOpen ? 'faq__item--open' : ''}`}
+                key={item.question}
+              >
                 <button
                   className="faq__button"
                   type="button"

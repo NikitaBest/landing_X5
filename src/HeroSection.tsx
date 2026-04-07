@@ -83,6 +83,11 @@ function HeroSection({ onOpenScanModal, onOpenScanModalWeb }: HeroSectionProps) 
     return () => window.clearTimeout(timer)
   }, [isHeroMediaVisible])
 
+  const handleOpenFaqMetrics = () => {
+    window.dispatchEvent(new CustomEvent('open-faq-item', { detail: { id: 'metrics' } }))
+    document.getElementById('faq-metrics')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }
+
   return (
     <>
       <header className={`topbar ${isMobileMenuOpen ? 'topbar--menu-open' : ''}`}>
@@ -151,10 +156,10 @@ function HeroSection({ onOpenScanModal, onOpenScanModalWeb }: HeroSectionProps) 
             персональный рацион питания
           </p>
           <div className="hero-tags">
-            <span className="hero-tag">
+            <button className="hero-tag hero-tag--button" type="button" onClick={handleOpenFaqMetrics}>
               <img src="/60.svg" alt="" aria-hidden="true" />
               20+ показателей здоровья
-            </span>
+            </button>
             <span className="hero-tag">
               <img src="/fon.svg" alt="" aria-hidden="true" />
               Без установки приложения
