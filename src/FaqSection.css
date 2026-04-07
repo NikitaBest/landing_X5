@@ -107,6 +107,7 @@
   color: #5f7a6a;
   font-size: 14px;
   line-height: 1.5;
+  white-space: pre-line;
 }
 
 @media (max-width: 980px) {
