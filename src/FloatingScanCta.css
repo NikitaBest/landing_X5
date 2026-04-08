@@ -1,0 +1,80 @@
+.floating-scan-cta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1500;
+  display: flex;
+  justify-content: center;
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease;
+}
+
+.floating-scan-cta--visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.floating-scan-cta__backdrop {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(249, 250, 251, 0.92) 35%, rgba(249, 250, 251, 0.97) 100%);
+  pointer-events: none;
+}
+
+.floating-scan-cta__inner {
+  position: relative;
+  width: 100%;
+  max-width: min(277.5px, calc(100vw - 32px));
+  pointer-events: auto;
+}
+
+/* как у hero-scan-button: прозрачный фон, зелёная обводка */
+.floating-scan-cta__button {
+  box-sizing: border-box;
+  width: 100%;
+  height: 52px;
+  padding: 0 24px;
+  gap: 10px;
+  font-size: 16px;
+  border-radius: 16px !important;
+  background: transparent !important;
+  color: #479e4b !important;
+  border: 1px solid #479e4b !important;
+  box-shadow:
+    0 4px 14px rgba(46, 125, 50, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.floating-scan-cta__button:hover {
+  background: rgba(71, 158, 75, 0.12) !important;
+}
+
+.floating-scan-cta__button .button__icon img {
+  width: 16px;
+  height: 16px;
+}
+
+@media (min-width: 768px) {
+  .floating-scan-cta {
+    padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .floating-scan-cta__button {
+    height: 58px;
+    padding: 0 32px;
+    gap: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-scan-cta {
+    transition: none;
+  }
+}

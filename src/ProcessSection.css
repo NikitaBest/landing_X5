@@ -1,5 +1,6 @@
 .process {
   margin-top: 48px;
+  scroll-margin-top: 80px;
   background: linear-gradient(180deg, #f9fafb 0%, #cae8d7 100%);
   padding: 72px 0 84px;
 }

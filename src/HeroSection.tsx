@@ -174,23 +174,24 @@ function HeroSection({ onOpenScanModal, onOpenScanModalWeb }: HeroSectionProps) 
           </div>
           <div className="actions">
             <Button
-              className="hero-scan-button"
-              type="button"
-              onClick={onOpenScanModal}
-              startIcon={<img src="/Iconscan.svg" alt="" aria-hidden="true" />}
-            >
-              Пройти чекап
-            </Button>
-            <Button
-              variant="secondary"
+              variant="primary"
               className="hero-how-button"
               type="button"
               onClick={() => {
-                document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })
+                document.getElementById('tech')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
               }}
               startIcon={<img src="/Iconcac.svg" alt="" aria-hidden="true" />}
             >
               Как это работает
+            </Button>
+            <Button
+              variant="secondary"
+              className="hero-scan-button"
+              type="button"
+              onClick={onOpenScanModal}
+              startIcon={<img src="/Iconscan-green.svg" alt="" aria-hidden="true" />}
+            >
+              Пройти чекап
             </Button>
           </div>
         </div>

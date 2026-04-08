@@ -9,6 +9,7 @@ import FaqSection from './FaqSection'
 import FinalCtaSection from './FinalCtaSection'
 import FooterSection from './FooterSection'
 import ScanModal from './ScanModal'
+import FloatingScanCta from './FloatingScanCta'
 import { buildScanAppUrl } from './scanAppUrl'
 import { getUtmLabelFromLocation, readStoredAuthId, readStoredAuthToken, storeAuthResponse } from './authSession'
 
@@ -280,6 +281,7 @@ function App() {
       <FinalCtaSection onOpenScanModal={handleOpenScanModal} />
       <FooterSection />
       <ScanModal isOpen={isScanModalOpen} onClose={handleCloseScanModal} />
+      <FloatingScanCta onOpenScan={handleOpenScanModal} isScanModalOpen={isScanModalOpen} />
     </div>
   )
 }
