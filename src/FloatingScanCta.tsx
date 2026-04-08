@@ -10,7 +10,7 @@ function getViewportDocumentBottom(): number {
     return scrollY + vv.height
   }
 
-    return scrollY + window.innerHeight
+  return scrollY + window.innerHeight
 }
 
 function elementDocumentTop(el: HTMLElement): number {
@@ -87,10 +87,10 @@ function FloatingScanCta({ onOpenScan, isScanModalOpen }: FloatingScanCtaProps) 
       <div className="floating-scan-cta__inner">
         <Button
           type="button"
-          variant="secondary"
+          variant="primary"
           className="floating-scan-cta__button"
           onClick={onOpenScan}
-          startIcon={<img src="/Iconscan-green.svg" alt="" aria-hidden="true" />}
+          startIcon={<img src="/Iconscan.svg" alt="" aria-hidden="true" />}
         >
           Пройти чекап
         </Button>

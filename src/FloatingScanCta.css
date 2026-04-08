@@ -35,25 +35,16 @@
   pointer-events: auto;
 }
 
-/* как у hero-scan-button: прозрачный фон, зелёная обводка */
+/* primary: зелёная заливка, белый текст; размеры под узкую плашку */
 .floating-scan-cta__button {
   box-sizing: border-box;
-  width: 100%;
+  width: 100% !important;
   height: 52px;
   padding: 0 24px;
   gap: 10px;
-  font-size: 16px;
-  border-radius: 16px !important;
-  background: transparent !important;
-  color: #479e4b !important;
-  border: 1px solid #479e4b !important;
-  box-shadow:
-    0 4px 14px rgba(46, 125, 50, 0.12),
-    0 1px 3px rgba(0, 0, 0, 0.06);
-}
-
-.floating-scan-cta__button:hover {
-  background: rgba(71, 158, 75, 0.12) !important;
+  font-size: 16px !important;
+  flex-grow: 0 !important;
+  order: unset !important;
 }
 
 .floating-scan-cta__button .button__icon img {

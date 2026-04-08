@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react'
 import Button from './Button'
 import './HeroSection.css'
 
+const HERO_SCREEN_SLIDES = ['/1.jpg', '/2.jpg', '/3.jpg', '/4.jpg'] as const
+
+const SLIDE_HOLD_MS = 2000
+
 type HeroSectionProps = {
   onOpenScanModal: () => void
   onOpenScanModalWeb: () => void
@@ -10,10 +14,10 @@ type HeroSectionProps = {
 function HeroSection({ onOpenScanModal, onOpenScanModalWeb }: HeroSectionProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isFrameReady, setIsFrameReady] = useState(false)
-  const [isVideoReady, setIsVideoReady] = useState(false)
+  const [areSlidesReady, setAreSlidesReady] = useState(false)
   const [isHeroMediaVisible, setIsHeroMediaVisible] = useState(false)
   const [areHeroCardsVisible, setAreHeroCardsVisible] = useState(false)
-  const [isHeroVideoPlayable, setIsHeroVideoPlayable] = useState(false)
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0)
 
   useEffect(() => {
     let isCancelled = false
@@ -33,25 +37,24 @@ function HeroSection({ onOpenScanModal, onOpenScanModalWeb }: HeroSectionProps) 
       frameImage.onerror = markFrameReady
     }
 
-    const preloadedVideo = document.createElement('video')
-    const markVideoReady = () => {
+    const preloadSlides = async () => {
+      await Promise.all(
+        HERO_SCREEN_SLIDES.map(
+          (src) =>
+            new Promise<void>((resolve) => {
+              const img = new Image()
+              img.onload = () => resolve()
+              img.onerror = () => resolve()
+              img.src = src
+            }),
+        ),
+      )
       if (!isCancelled) {
-        setIsVideoReady(true)
+        setAreSlidesReady(true)
       }
     }
 
-    preloadedVideo.preload = 'auto'
-    preloadedVideo.muted = true
-    preloadedVideo.playsInline = true
-    preloadedVideo.src = '/IMG_5365.MP4'
-
-    if (preloadedVideo.readyState >= 2) {
-      markVideoReady()
-    } else {
-      preloadedVideo.addEventListener('loadeddata', markVideoReady, { once: true })
-      preloadedVideo.addEventListener('error', markVideoReady, { once: true })
-      preloadedVideo.load()
-    }
+    void preloadSlides()
 
     const fallbackTimer = window.setTimeout(() => {
       if (!isCancelled) {
@@ -62,23 +65,30 @@ function HeroSection({ onOpenScanModal, onOpenScanModalWeb }: HeroSectionProps) 
     return () => {
       isCancelled = true
       window.clearTimeout(fallbackTimer)
-      preloadedVideo.pause()
-      preloadedVideo.removeAttribute('src')
-      preloadedVideo.load()
     }
   }, [])
 
   useEffect(() => {
-    if (isFrameReady && isVideoReady) {
+    if (isFrameReady && areSlidesReady) {
       setIsHeroMediaVisible(true)
     }
-  }, [isFrameReady, isVideoReady])
+  }, [isFrameReady, areSlidesReady])
 
   useEffect(() => {
-    if (isVideoReady) {
-      setIsHeroVideoPlayable(true)
+    if (!isHeroMediaVisible || !areSlidesReady) {
+      return
     }
-  }, [isVideoReady])
+
+    if (typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return
+    }
+
+    const id = window.setInterval(() => {
+      setActiveSlideIndex((i) => (i + 1) % HERO_SCREEN_SLIDES.length)
+    }, SLIDE_HOLD_MS)
+
+    return () => window.clearInterval(id)
+  }, [isHeroMediaVisible, areSlidesReady])
 
   useEffect(() => {
     if (!isHeroMediaVisible) {
@@ -202,19 +212,20 @@ function HeroSection({ onOpenScanModal, onOpenScanModalWeb }: HeroSectionProps) 
                 <div className="hero-phone">
                   <img src="/iPhone.png" alt="" className="hero-phone__frame" aria-hidden />
                   <div className="hero-phone__screen">
-                    {!isHeroVideoPlayable ? <div className="hero-phone__loader" aria-hidden="true" /> : null}
-                    <video
-                      className="hero-phone__video"
-                      src="/IMG_5365.MP4"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      preload="auto"
-                      onLoadedData={() => setIsHeroVideoPlayable(true)}
-                      onCanPlay={() => setIsHeroVideoPlayable(true)}
-                      aria-label="Демонстрация интерфейса NutriScan в приложении"
-                    />
+                    {!areSlidesReady ? <div className="hero-phone__loader" aria-hidden="true" /> : null}
+                    <div className="hero-phone__slides" aria-label="Примеры экранов NutriScan в приложении">
+                      {HERO_SCREEN_SLIDES.map((src, index) => (
+                        <img
+                          key={src}
+                          className={`hero-phone__slide ${index === activeSlideIndex ? 'hero-phone__slide--active' : ''}`}
+                          src={src}
+                          alt=""
+                          loading={index === 0 ? 'eager' : 'lazy'}
+                          decoding="async"
+                          draggable={false}
+                        />
+                      ))}
+                    </div>
                   </div>
                 </div>
                 {areHeroCardsVisible ? (
