@@ -1,4 +1,5 @@
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import QRCode from 'qrcode'
 import './ScanModal.css'
 import { buildScanAppUrl } from './scanAppUrl'
 import { readStoredAuthId } from './authSession'
@@ -28,10 +29,12 @@ async function copyTextToClipboard(text: string): Promise<void> {
 
 function ScanModal({ isOpen, onClose }: ScanModalProps) {
   const [copyNotice, setCopyNotice] = useState(false)
+  const [qrDataUrl, setQrDataUrl] = useState<string>('/qrcode.png')
   const noticeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const scanAppUrl = buildScanAppUrl(readStoredAuthId())
 
   const handleCopyLink = useCallback(async () => {
-    await copyTextToClipboard(buildScanAppUrl(readStoredAuthId()))
+    await copyTextToClipboard(scanAppUrl)
     if (noticeTimeoutRef.current) {
       clearTimeout(noticeTimeoutRef.current)
     }
@@ -40,7 +43,37 @@ function ScanModal({ isOpen, onClose }: ScanModalProps) {
       setCopyNotice(false)
       noticeTimeoutRef.current = null
     }, 2600)
-  }, [])
+  }, [scanAppUrl])
+
+  useEffect(() => {
+    if (!isOpen) {
+      return
+    }
+
+    let isDisposed = false
+    void QRCode.toDataURL(scanAppUrl, {
+      width: 212,
+      margin: 1,
+      color: {
+        dark: '#22352e',
+        light: '#ffffff',
+      },
+    })
+      .then((dataUrl) => {
+        if (!isDisposed) {
+          setQrDataUrl(dataUrl)
+        }
+      })
+      .catch(() => {
+        if (!isDisposed) {
+          setQrDataUrl('/qrcode.png')
+        }
+      })
+
+    return () => {
+      isDisposed = true
+    }
+  }, [isOpen, scanAppUrl])
 
   if (!isOpen) {
     return null
@@ -64,7 +97,7 @@ function ScanModal({ isOpen, onClose }: ScanModalProps) {
         <div className="scan-modal__qr-wrap">
           <img
             className="scan-modal__qr"
-            src="/qrcode.png"
+            src={qrDataUrl}
             alt="QR-код для открытия NutriScan на телефоне"
             loading="lazy"
             decoding="async"
