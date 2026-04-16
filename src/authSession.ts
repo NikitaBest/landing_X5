@@ -46,3 +46,8 @@ export function getUtmLabelFromLocation(search: string): string {
   const params = new URLSearchParams(search)
   return params.get('utm') ?? ''
 }
+
+export function getAuthIdFromLocation(search: string): string {
+  const params = new URLSearchParams(search)
+  return params.get('id') ?? ''
+}

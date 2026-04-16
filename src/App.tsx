@@ -11,7 +11,13 @@ import FooterSection from './FooterSection'
 import ScanModal from './ScanModal'
 import FloatingScanCta from './FloatingScanCta'
 import { buildScanAppUrl } from './scanAppUrl'
-import { getUtmLabelFromLocation, readStoredAuthId, readStoredAuthToken, storeAuthResponse } from './authSession'
+import {
+  getAuthIdFromLocation,
+  getUtmLabelFromLocation,
+  readStoredAuthId,
+  readStoredAuthToken,
+  storeAuthResponse,
+} from './authSession'
 
 const PHONE_MEDIA_QUERY = '(max-width: 767px)'
 
@@ -62,7 +68,9 @@ function App() {
 
     let isCancelled = false
     const utmLabel = getUtmLabelFromLocation(window.location.search)
+    const incomingAuthId = getAuthIdFromLocation(window.location.search)
     const storedAuthId = readStoredAuthId()
+    const authIdForLogin = incomingAuthId || storedAuthId
 
     const loginBySession = async () => {
       try {
@@ -71,7 +79,7 @@ function App() {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ id: storedAuthId || null, utm: utmLabel }),
+          body: JSON.stringify({ id: authIdForLogin || null, utm: utmLabel }),
         })
 
         if (!response.ok) {
