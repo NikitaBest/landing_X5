@@ -20,6 +20,7 @@ import {
 } from './authSession'
 
 const PHONE_MEDIA_QUERY = '(max-width: 767px)'
+const REF_LINK_UTM_PREFIX = 'ref_link_landing_'
 
 function isPhoneClient() {
   if (typeof window === 'undefined') {
@@ -68,6 +69,7 @@ function App() {
 
     let isCancelled = false
     const utmLabel = getUtmLabelFromLocation(window.location.search)
+    const hasIncomingUtm = Boolean(utmLabel)
     const incomingAuthId = getAuthIdFromLocation(window.location.search)
     const storedAuthId = readStoredAuthId()
     const authIdForLogin = incomingAuthId || storedAuthId
@@ -106,9 +108,21 @@ function App() {
               : utmLabel
 
         if (typeof backendUserId === 'string' && backendUserId.length > 0) {
+          const generatedRefUtm = `${REF_LINK_UTM_PREFIX}${backendUserId}`
+          const effectiveUtm = backendUtm || (hasIncomingUtm ? utmLabel : generatedRefUtm)
+
+          // Если пользователь зашел по прямой ссылке без utm — проставляем персональную ref-метку в адрес.
+          if (!hasIncomingUtm) {
+            const params = new URLSearchParams(window.location.search)
+            params.set('utm', generatedRefUtm)
+            const nextSearch = params.toString()
+            const nextUrl = `${window.location.pathname}${nextSearch ? `?${nextSearch}` : ''}${window.location.hash}`
+            window.history.replaceState(null, '', nextUrl)
+          }
+
           storeAuthResponse({
             id: backendUserId,
-            utm: backendUtm,
+            utm: effectiveUtm,
             token: typeof data.token === 'string' ? data.token : undefined,
           })
         }
